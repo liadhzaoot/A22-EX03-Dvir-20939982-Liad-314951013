@@ -8,7 +8,7 @@ namespace GarageLogic
 {
     interface IElectricVehicle
     {
-        int liad;
+        int liad; 
         
     }
 }
