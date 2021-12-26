@@ -8,7 +8,23 @@ namespace GarageLogic
 {
     interface IElectricVehicle
     {
-        int liad; 
-        
+        float BatteryHourRemaning 
+        {
+            get;
+            set;
+        }
+
+        float MaxHourBattery
+        {
+            get;
+            set;
+        }
+        EnumClass.GasTypeEnum GasType
+        {
+            get;
+            set;
+        }
+
+        void ChargeBattery(float i_AddElectricity);
     }
 }

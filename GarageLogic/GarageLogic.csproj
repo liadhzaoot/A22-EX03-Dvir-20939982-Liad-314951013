@@ -42,6 +42,8 @@
     <Compile Include="Bike.cs" />
     <Compile Include="Car.cs" />
     <Compile Include="ElectricVehicle.cs" />
+    <Compile Include="EnumClass.cs" />
+    <Compile Include="Garage.cs" />
     <Compile Include="IGasVehicle.cs" />
     <Compile Include="Track.cs" />
     <Compile Include="Vehicle.cs" />
