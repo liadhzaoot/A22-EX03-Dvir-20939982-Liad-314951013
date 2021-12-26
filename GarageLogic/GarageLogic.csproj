@@ -41,7 +41,9 @@
   <ItemGroup>
     <Compile Include="Bike.cs" />
     <Compile Include="Car.cs" />
-    <Compile Include="ElectricVehicle.cs" />
+    <Compile Include="ElectricBike.cs" />
+    <Compile Include="ElectricCar.cs" />
+    <Compile Include="IElectricVehicle.cs" />
     <Compile Include="EnumClass.cs" />
     <Compile Include="Garage.cs" />
     <Compile Include="Track.cs" />

@@ -19,11 +19,6 @@ namespace GarageLogic
             get;
             set;
         }
-        EnumClass.GasTypeEnum GasType
-        {
-            get;
-            set;
-        }
 
         void ChargeBattery(float i_AddElectricity);
     }

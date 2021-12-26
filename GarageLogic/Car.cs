@@ -8,25 +8,12 @@ namespace GarageLogic
 {
     abstract class Car : Vehicle
     {
-        public enum eColor
-        {
-            Red,
-            White,
-            Black,
-            Blue
-        }
-        public enum eNumberOfDoors
-        {
-            Two,
-            Three,
-            Four,
-            Five
-        }
+ 
 
-        eColor m_CarColor;
-        eNumberOfDoors m_NumberOfDoors;
+        EnumClass.eColor m_CarColor;
+        EnumClass.eNumberOfDoors m_NumberOfDoors;
 
-        public eColor CarColor
+        public EnumClass.eColor CarColor
         {
             get
             {
@@ -38,7 +25,7 @@ namespace GarageLogic
             }
         }
 
-        public eNumberOfDoors NumberOfDoors
+        public EnumClass.eNumberOfDoors NumberOfDoors
         {
             get
             {

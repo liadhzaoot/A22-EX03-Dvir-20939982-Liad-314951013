@@ -10,6 +10,17 @@ namespace GarageLogic
     {
         private string m_OwnerName;
         private string m_OwnerPhoneNumber;
-        public enum wnerName;
+        private EnumClass.eCarStatus m_CarStatus;
+        public EnumClass.eCarStatus CarStatus
+        {
+            get
+            {
+                return m_CarStatus;
+            }
+            set
+            {
+                m_CarStatus = value;
+            }
+        }
     }
 }

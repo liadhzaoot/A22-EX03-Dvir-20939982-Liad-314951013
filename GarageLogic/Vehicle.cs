@@ -11,7 +11,7 @@ namespace GarageLogic
         private string m_ModelName;
         private string m_LicenseNumber;
         private float m_EnergyPrecentage;
-        List<Wheel> m_WheelsList;
+        private List<Wheel> m_WheelsList;
 
         public string ModelName 
         {
