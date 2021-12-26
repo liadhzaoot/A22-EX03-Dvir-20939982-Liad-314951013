@@ -42,6 +42,14 @@ namespace GarageLogic
             InRepair,
             FixedCar,
             Paid
+
+        public enum eGasType
+        {
+            Octan95,
+            Octan96,
+            Octan98,
+            Soler
         }
+
     }
 }
