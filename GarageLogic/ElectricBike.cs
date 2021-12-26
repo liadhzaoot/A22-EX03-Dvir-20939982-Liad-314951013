@@ -57,7 +57,10 @@ namespace GarageLogic
    
         public void ChargeBattery(float i_AddElectricity)
         {
-            throw new NotImplementedException();
+            if (this.BatteryHourRemaning + i_AddElectricity <= this.MaxHourBattery)
+            {
+                this.BatteryHourRemaning += i_AddElectricity;
+            }
         }
     }
 }
