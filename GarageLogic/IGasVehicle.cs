@@ -10,18 +10,12 @@ namespace GarageLogic
 
     interface IGasVehicle
     {
-        public enum eGasType
-        {
-            Octan95,
-            Octan96,
-            Octan98,
-            Soler
-        }
+        EnumClass.eGasType GasType { get; set; }
         float CurrentLiterGasCapacity { get; set; }
 
         float MaxLiterGasCapacity { get; set; }
 
-        void AddGas(float i_GasAmountToAdd, );
+        void AddGas(float i_GasAmountToAdd, EnumClass.eGasType i_GasType);
 
     }
 }

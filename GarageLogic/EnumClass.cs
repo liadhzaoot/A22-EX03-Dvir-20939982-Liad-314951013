@@ -8,13 +8,14 @@ namespace GarageLogic
 {
     public class EnumClass
     {
-        public class GasTypeEnum
+
+        public enum eGasType
         {
-            public enum eGasType
-            {
-                Octan98,
-                Octan96,
-            }
+            Octan95,
+            Octan96,
+            Octan98,
+            Soler
         }
+
     }
 }
