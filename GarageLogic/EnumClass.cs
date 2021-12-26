@@ -8,12 +8,6 @@ namespace GarageLogic
 {
     public class EnumClass
     {
-        public enum eGasType
-        {
-            Octan98,
-            Octan96,
-        }
-
         public enum eColor
         {
             Red,
@@ -42,7 +36,7 @@ namespace GarageLogic
             InRepair,
             FixedCar,
             Paid
-
+        }
         public enum eGasType
         {
             Octan95,
