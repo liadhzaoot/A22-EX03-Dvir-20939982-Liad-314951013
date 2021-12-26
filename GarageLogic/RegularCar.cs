@@ -6,28 +6,28 @@ using System.Threading.Tasks;
 
 namespace GarageLogic
 {
-    class RegularBike : Bike, IGasVehicle
+    internal class RegularCar: Car, IGasVehicle
     {
         private float m_CurrentLiterGasCapacity;
-        private float m_MaxLiterGasCapacity;  
+        private float m_MaxLiterGasCapacity;
         private EnumClass.eGasType m_GasType;
-        public RegularBike(float i_CurrentLiterGasCapacity, float i_MaxLiterGasCapacity, EnumClass.eGasType i_GasType)
-        { 
+        public RegularCar(float i_CurrentLiterGasCapacity, float i_MaxLiterGasCapacity, EnumClass.eGasType i_GasType)
+        {
             this.m_CurrentLiterGasCapacity = i_CurrentLiterGasCapacity;
-            this.m_MaxLiterGasCapacity = i_MaxLiterGasCapacity;   
+            this.m_MaxLiterGasCapacity = i_MaxLiterGasCapacity;
             this.m_GasType = i_GasType;
         }
-        public EnumClass.eGasType GasType 
-        { 
-            get { return this.m_GasType; } 
-            set { this.m_GasType = value; } 
+        public EnumClass.eGasType GasType
+        {
+            get { return this.m_GasType; }
+            set { this.m_GasType = value; }
         }
-        public float CurrentLiterGasCapacity 
+        public float CurrentLiterGasCapacity
         {
             get { return this.m_CurrentLiterGasCapacity; }
             set { this.m_CurrentLiterGasCapacity = value; }
         }
-        public float MaxLiterGasCapacity 
+        public float MaxLiterGasCapacity
         {
             get { return this.m_MaxLiterGasCapacity; }
             set { this.m_MaxLiterGasCapacity = value; }
@@ -39,6 +39,7 @@ namespace GarageLogic
             {
                 this.CurrentLiterGasCapacity += i_GasAmountToAdd;
             }
+
         }
     }
 }

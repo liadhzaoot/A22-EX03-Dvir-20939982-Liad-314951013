@@ -10,6 +10,6 @@ namespace GarageLogic
     {
         private string m_OwnerName;
         private string m_OwnerPhoneNumber;
-        public enum wnerName;
+        
     }
 }

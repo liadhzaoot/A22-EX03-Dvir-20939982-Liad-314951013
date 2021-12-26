@@ -46,6 +46,7 @@
     <Compile Include="Garage.cs" />
     <Compile Include="IGasVehicle.cs" />
     <Compile Include="RegularBike.cs" />
+    <Compile Include="RegularCar.cs" />
     <Compile Include="Track.cs" />
     <Compile Include="Vehicle.cs" />
     <Compile Include="Wheel.cs" />
