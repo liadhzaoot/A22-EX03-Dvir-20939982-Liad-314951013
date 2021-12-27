@@ -6,11 +6,18 @@ using System.Threading.Tasks;
 
 namespace GarageLogic
 {
-    class GasEngine
+    class FuelTank 
     {
         private float m_CurrentLiterGasCapacity;
         private float m_MaxLiterGasCapacity;
         private EnumClass.eGasType m_GasType;
+
+        public FuelTank(float i_CurrentLiterGasCapacity, float i_MaxLiterGasCapacity)
+        {
+            m_CurrentLiterGasCapacity = i_CurrentLiterGasCapacity;
+            m_MaxLiterGasCapacity=i_MaxLiterGasCapacity;    
+        }
+
         public EnumClass.eGasType GasType
         {
             get { return this.m_GasType; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GarageLogic
 {
-    class ElectricEngine
+    class Battery
     {
         private float m_BatteryHourRemaning;
         private float m_MaxHourBattery;

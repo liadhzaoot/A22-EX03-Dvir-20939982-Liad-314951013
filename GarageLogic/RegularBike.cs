@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace GarageLogic
 {
-    class RegularBike : Bike, IGasVehicle
+    class RegularBike : Bike
     {
         private float m_CurrentLiterGasCapacity;
         private float m_MaxLiterGasCapacity;  
+        private FuelTank m_Engine;
         private EnumClass.eGasType m_GasType;
         public RegularBike(float i_CurrentLiterGasCapacity, float i_MaxLiterGasCapacity, EnumClass.eGasType i_GasType)
         { 
@@ -33,12 +34,14 @@ namespace GarageLogic
             set { this.m_MaxLiterGasCapacity = value; }
         }
 
+        public FuelTank Engine
+        {
+            get { return this.m_Engine; }
+            set { this.m_Engine = value; }
+        }
         public void AddGas(float i_GasAmountToAdd, EnumClass.eGasType i_GasType)
         {
-            if (this.CurrentLiterGasCapacity + i_GasAmountToAdd <= this.MaxLiterGasCapacity && this.GasType == i_GasType)
-            {
-                this.CurrentLiterGasCapacity += i_GasAmountToAdd;
-            }
+            this.m_Engine.AddGas(i_GasAmountToAdd, i_GasType);
         }
     }
 }
