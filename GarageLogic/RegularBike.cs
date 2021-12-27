@@ -32,7 +32,7 @@ namespace GarageLogic
             set { this.m_FuelTank.MaxLiterFuelCapacity = value; }
         }
 
-        public void AddGas(float i_GasAmountToAdd, EnumClass.eFuelType i_GasType)
+        public void AddFuel(float i_GasAmountToAdd, EnumClass.eFuelType i_GasType)
         {
             this.m_FuelTank.AddFuel(i_GasAmountToAdd, i_GasType);
         }

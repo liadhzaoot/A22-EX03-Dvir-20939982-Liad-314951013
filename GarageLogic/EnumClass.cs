@@ -31,11 +31,12 @@ namespace GarageLogic
             AA,
             B
         }
-        public enum eCarStatus
+        public enum eVehicleStatus
         {
             InRepair,
             FixedCar,
-            Paid
+            Paid,
+            NoStatus
         }
         public enum eFuelType
         {

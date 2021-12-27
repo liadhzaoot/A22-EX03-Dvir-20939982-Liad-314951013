@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GarageLogic
 {
-    abstract class Vehicle
+    public abstract class Vehicle
     {
         private string m_ModelName;
         private string m_LicenseNumber;
@@ -63,5 +63,7 @@ namespace GarageLogic
                 m_WheelsList = value;
             }
         }
+        //public abstract void AddGas(float i_GasAmountToAdd, EnumClass.eFuelType i_GasType);
+
     }
 }
