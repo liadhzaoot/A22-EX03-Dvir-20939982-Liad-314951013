@@ -13,6 +13,12 @@ namespace GarageLogic
         private float m_EnergyPrecentage;
         private List<Wheel> m_WheelsList;
 
+        public Vehicle(string i_ModelName, string i_LicenseNumber, int i_WheelsNumber)
+        {
+            m_ModelName = i_ModelName;
+            m_LicenseNumber = i_LicenseNumber;
+            m_WheelsList = new List<Wheel>(i_WheelsNumber);
+        }
         public string ModelName 
         {
             get

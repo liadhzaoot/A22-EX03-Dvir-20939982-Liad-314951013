@@ -13,6 +13,13 @@ namespace GarageLogic
         EnumClass.eColor m_CarColor;
         EnumClass.eNumberOfDoors m_NumberOfDoors;
 
+        public Car(string i_ModelName, string i_LicenseNumber, int i_WheelsNumber, EnumClass.eColor i_CarColor,
+            EnumClass.eNumberOfDoors i_NumberOfDoors) : base(i_ModelName, i_LicenseNumber, i_WheelsNumber)
+        {
+            m_CarColor = i_CarColor;
+            m_NumberOfDoors = i_NumberOfDoors;
+        }
+
         public EnumClass.eColor CarColor
         {
             get

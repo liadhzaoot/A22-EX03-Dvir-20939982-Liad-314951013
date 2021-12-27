@@ -37,7 +37,7 @@ namespace GarageLogic
             FixedCar,
             Paid
         }
-        public enum eGasType
+        public enum eFuelType
         {
             Octan95,
             Octan96,

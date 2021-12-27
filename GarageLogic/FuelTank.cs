@@ -8,37 +8,38 @@ namespace GarageLogic
 {
     class FuelTank 
     {
-        private float m_CurrentLiterGasCapacity;
-        private float m_MaxLiterGasCapacity;
-        private EnumClass.eGasType m_GasType;
+        private float m_CurrentLiterFuelCapacity;
+        private float m_MaxLiterFuelCapacity;
+        private EnumClass.eFuelType m_FuelType;
 
-        public FuelTank(float i_CurrentLiterGasCapacity, float i_MaxLiterGasCapacity)
+        public FuelTank(float i_CurrentLiterFuelCapacity, float i_MaxLiterFuelCapacity, EnumClass.eFuelType i_FuelType)
         {
-            m_CurrentLiterGasCapacity = i_CurrentLiterGasCapacity;
-            m_MaxLiterGasCapacity=i_MaxLiterGasCapacity;    
-        }
-
-        public EnumClass.eGasType GasType
-        {
-            get { return this.m_GasType; }
-            set { this.m_GasType = value; }
-        }
-        public float CurrentLiterGasCapacity
-        {
-            get { return this.m_CurrentLiterGasCapacity; }
-            set { this.m_CurrentLiterGasCapacity = value; }
-        }
-        public float MaxLiterGasCapacity
-        {
-            get { return this.m_MaxLiterGasCapacity; }
-            set { this.m_MaxLiterGasCapacity = value; }
+            m_CurrentLiterFuelCapacity = i_CurrentLiterFuelCapacity;
+            m_MaxLiterFuelCapacity= i_MaxLiterFuelCapacity;    
+            m_FuelType = i_FuelType;
         }
 
-        public void AddGas(float i_GasAmountToAdd, EnumClass.eGasType i_GasType)
+        public EnumClass.eFuelType FuelType
         {
-            if (this.CurrentLiterGasCapacity + i_GasAmountToAdd <= this.MaxLiterGasCapacity && this.GasType == i_GasType)
+            get { return this.m_FuelType; }
+            set { this.m_FuelType = value; }
+        }
+        public float CurrentLiterFuelCapacity
+        {
+            get { return this.m_CurrentLiterFuelCapacity; }
+            set { this.m_CurrentLiterFuelCapacity = value; }
+        }
+        public float MaxLiterFuelCapacity
+        {
+            get { return this.m_MaxLiterFuelCapacity; }
+            set { this.m_MaxLiterFuelCapacity = value; }
+        }
+
+        public void AddFuel(float i_FuelAmountToAdd, EnumClass.eFuelType i_FuelType)
+        {
+            if (this.CurrentLiterFuelCapacity + i_FuelAmountToAdd <= this.MaxLiterFuelCapacity && this.FuelType == i_FuelType)
             {
-                this.CurrentLiterGasCapacity += i_GasAmountToAdd;
+                this.CurrentLiterFuelCapacity += i_FuelAmountToAdd;
             }
 
         }

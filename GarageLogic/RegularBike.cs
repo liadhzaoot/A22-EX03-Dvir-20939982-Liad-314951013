@@ -7,41 +7,34 @@ using System.Threading.Tasks;
 namespace GarageLogic
 {
     class RegularBike : Bike
-    {
-        private float m_CurrentLiterGasCapacity;
-        private float m_MaxLiterGasCapacity;  
-        private FuelTank m_Engine;
-        private EnumClass.eGasType m_GasType;
-        public RegularBike(float i_CurrentLiterGasCapacity, float i_MaxLiterGasCapacity, EnumClass.eGasType i_GasType)
-        { 
-            this.m_CurrentLiterGasCapacity = i_CurrentLiterGasCapacity;
-            this.m_MaxLiterGasCapacity = i_MaxLiterGasCapacity;   
-            this.m_GasType = i_GasType;
-        }
-        public EnumClass.eGasType GasType 
-        { 
-            get { return this.m_GasType; } 
-            set { this.m_GasType = value; } 
-        }
-        public float CurrentLiterGasCapacity 
+    { 
+        private FuelTank m_FuelTank;
+        public RegularBike(string i_ModelName, string i_LicenseNumber, int i_WheelsNumber, EnumClass.eLicenseType i_LicenseType,
+            int i_EngineCapacity, float i_CurrentLiterFuelCapacity,
+                float i_MaxLiterFuelCapacity, EnumClass.eFuelType i_FuelType) 
+            : base(i_ModelName, i_LicenseNumber, i_WheelsNumber, i_LicenseType, i_EngineCapacity)
         {
-            get { return this.m_CurrentLiterGasCapacity; }
-            set { this.m_CurrentLiterGasCapacity = value; }
+            m_FuelTank = new FuelTank(i_CurrentLiterFuelCapacity, i_MaxLiterFuelCapacity, i_FuelType);
         }
-        public float MaxLiterGasCapacity 
+        public EnumClass.eFuelType FuelType
         {
-            get { return this.m_MaxLiterGasCapacity; }
-            set { this.m_MaxLiterGasCapacity = value; }
+            get { return this.m_FuelTank.FuelType; }
+            set { this.m_FuelTank.FuelType = value; }
+        }
+        public float CurrentLiterGasCapacity
+        {
+            get { return this.m_FuelTank.CurrentLiterFuelCapacity; }
+            set { this.m_FuelTank.CurrentLiterFuelCapacity = value; }
+        }
+        public float MaxLiterGasCapacity
+        {
+            get { return this.m_FuelTank.MaxLiterFuelCapacity; }
+            set { this.m_FuelTank.MaxLiterFuelCapacity = value; }
         }
 
-        public FuelTank Engine
+        public void AddGas(float i_GasAmountToAdd, EnumClass.eFuelType i_GasType)
         {
-            get { return this.m_Engine; }
-            set { this.m_Engine = value; }
-        }
-        public void AddGas(float i_GasAmountToAdd, EnumClass.eGasType i_GasType)
-        {
-            this.m_Engine.AddGas(i_GasAmountToAdd, i_GasType);
+            this.m_FuelTank.AddFuel(i_GasAmountToAdd, i_GasType);
         }
     }
 }

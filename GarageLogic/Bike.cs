@@ -13,6 +13,13 @@ namespace GarageLogic
         private EnumClass.eLicenseType m_LicenseType;
         private int m_EngineCapacity;
 
+        public Bike(string i_ModelName, string i_LicenseNumber, int i_WheelsNumber, EnumClass.eLicenseType i_LicenseType, 
+            int i_EngineCapacity):base(i_ModelName, i_LicenseNumber, i_WheelsNumber)
+        {
+            m_LicenseType = i_LicenseType;
+            m_EngineCapacity = i_EngineCapacity;    
+        }
+
         //public Bike(int i_EngineCapacity,
         //            EnumClass.eLicenseTypes i_LicenseTypes,
         //            string i_ModwelName,
