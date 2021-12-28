@@ -18,7 +18,12 @@ namespace GarageLogic
             m_MaxLiterFuelCapacity= i_MaxLiterFuelCapacity;    
             m_FuelType = i_FuelType;
         }
+        public FuelTank(float i_MaxLiterFuelCapacity, EnumClass.eFuelType i_FuelType)
+        {
+            m_MaxLiterFuelCapacity = i_MaxLiterFuelCapacity;
+            m_FuelType = i_FuelType;
 
+        }
         public EnumClass.eFuelType FuelType
         {
             get { return this.m_FuelType; }
@@ -37,10 +42,16 @@ namespace GarageLogic
 
         public void AddFuel(float i_FuelAmountToAdd, EnumClass.eFuelType i_FuelType)
         {
-            if (this.CurrentLiterFuelCapacity + i_FuelAmountToAdd <= this.MaxLiterFuelCapacity && this.FuelType == i_FuelType)
+            if (this.FuelType != i_FuelType)
             {
-                this.CurrentLiterFuelCapacity += i_FuelAmountToAdd;
+                throw new ArgumentException("invalid fuel type");
+
             }
+            if (this.CurrentLiterFuelCapacity + i_FuelAmountToAdd > this.MaxLiterFuelCapacity)
+            {
+                throw new ValueOutOfRangeException(0, this.m_MaxLiterFuelCapacity);
+            }
+            this.CurrentLiterFuelCapacity += i_FuelAmountToAdd;
 
         }
     }

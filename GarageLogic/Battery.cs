@@ -16,6 +16,10 @@ namespace GarageLogic
             m_BatteryHourRemaning = i_BatteryHourRemaning;
             m_MaxHourBattery = i_MaxHourBattery;
         }
+        public Battery( float i_MaxHourBattery)
+        {
+            m_MaxHourBattery = i_MaxHourBattery;
+        }
 
         public float BatteryHourRemaning
         {
@@ -31,9 +35,14 @@ namespace GarageLogic
 
         public void ChargeBattery(float i_AddElectricity)
         {
+            
             if (this.BatteryHourRemaning + i_AddElectricity <= this.MaxHourBattery)
             {
                 this.BatteryHourRemaning += i_AddElectricity;
+            }
+            else
+            {
+                throw new ValueOutOfRangeException(0, this.MaxHourBattery);
             }
         }
     }
