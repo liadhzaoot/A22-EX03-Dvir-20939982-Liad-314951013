@@ -12,6 +12,7 @@ namespace GarageLogic
         private string m_OwnerName;
         private string m_OwnerPhoneNumber;
         private EnumClass.eVehicleStatus m_CarStatus;
+         
 
 
         public VehicleInGarage(Vehicle i_VehicleInGarage, 

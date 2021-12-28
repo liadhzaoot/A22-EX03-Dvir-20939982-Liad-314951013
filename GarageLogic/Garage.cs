@@ -67,9 +67,9 @@ namespace GarageLogic
             {
                 GetVehicleInGarageByLicenseNumber(i_LicenseNumber).CarStatus = i_NewStatus;
             }
-            catch
+            catch 
             {
-                throw new NullReferenceException("car doest exist");
+                throw new NullReferenceException("car does not exist");
             }
         }
         private VehicleInGarage GetVehicleInGarageByLicenseNumber(string i_LiceseNumber)
@@ -94,10 +94,46 @@ namespace GarageLogic
             }
         }
 
-        public void RefuelVehicle(string i_LiceseNumber, EnumClass.eFuelType i_FuelType, float i_GasAmountToAdd)
+        public void RefuelGasVehicle(string i_LiceseNumber, EnumClass.eFuelType i_FuelType, float i_GasAmountToAdd)
         {
+
+            // ---------------------- watch out that we have 2 addFuel methods --------------------------------
             VehicleInGarage vehicleInGarage = GetVehicleInGarageByLicenseNumber(i_LiceseNumber);
-            vehicleInGarage.Vehicle is 
+
+            RegularBike regularBike = vehicleInGarage.Vehicle as RegularBike;
+            if(regularBike != null)
+            {
+                regularBike.AddFuel(i_GasAmountToAdd, i_FuelType);
+            }
+            else
+            {
+                RegularCar regularCar = vehicleInGarage.Vehicle as RegularCar;
+                if (regularCar != null)
+                {
+                    regularCar.AddFuel(i_GasAmountToAdd, i_FuelType);
+                }
+            }
+             
+        }
+        public void RechargeElectricVehicle(string i_LiceseNumber, float i_GasAmountToAdd)
+        {
+
+            // ---------------------- watch out that we have 2 addFuel methods --------------------------------
+            VehicleInGarage vehicleInGarage = GetVehicleInGarageByLicenseNumber(i_LiceseNumber);
+
+            ElectricBike regularBike = vehicleInGarage.Vehicle as ElectricBike;
+            if (regularBike != null)
+            {
+                regularBike.ChargeBattery(i_GasAmountToAdd);
+            }
+            else
+            {
+                ElectricCar regularCar = vehicleInGarage.Vehicle as ElectricCar;
+                if (regularCar != null)
+                {
+                    regularCar.ChargeBattery(i_GasAmountToAdd);
+                }
+            }
 
         }
 

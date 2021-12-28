@@ -47,6 +47,8 @@
     <Compile Include="EnergySupply.cs" />
     <Compile Include="EnumClass.cs" />
     <Compile Include="Garage.cs" />
+    <Compile Include="GarageManager.cs" />
+    <Compile Include="ValueOutOfRangeException.cs" />
     <Compile Include="VehicleInGarage.cs" />
     <Compile Include="FuelTank.cs" />
     <Compile Include="RegularBike.cs" />
