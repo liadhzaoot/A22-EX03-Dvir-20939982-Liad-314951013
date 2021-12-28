@@ -94,7 +94,7 @@ namespace GarageLogic
             }
         }
 
-        public void RefuelGasVehicle(string i_LiceseNumber, EnumClass.eFuelType i_FuelType, float i_GasAmountToAdd)
+        public void RefuelVehicle(string i_LiceseNumber, EnumClass.eFuelType i_FuelType, float i_GasAmountToAdd)
         {
 
             // ---------------------- watch out that we have 2 addFuel methods --------------------------------
