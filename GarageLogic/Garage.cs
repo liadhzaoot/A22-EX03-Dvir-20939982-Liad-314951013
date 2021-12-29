@@ -78,26 +78,27 @@ namespace GarageLogic
 
         public void ChangeStatus(string i_LicenseNumber, EnumClass.eVehicleStatus i_NewStatus)
         {
-            try
-            {
-                GetVehicleInGarageByLicenseNumber(i_LicenseNumber).CarStatus = i_NewStatus;
-            }
-            catch 
-            {
-                throw new NullReferenceException("car does not exist");
-            }
+            GetVehicleInGarageByLicenseNumber(i_LicenseNumber).CarStatus = i_NewStatus;
+
         }
         private VehicleInGarage GetVehicleInGarageByLicenseNumber(string i_LiceseNumber)
         {
             VehicleInGarage vehicle = null;
             foreach (VehicleInGarage vehicleInGarage in m_VehiclesInGarage)
             {
-                if(vehicleInGarage.Vehicle.LicenseNumber.Equals(i_LiceseNumber))
+                if (vehicleInGarage.Vehicle.LicenseNumber.Equals(i_LiceseNumber))
                 {
                     vehicle = vehicleInGarage;
                 }
             }
-            return vehicle;
+            if (vehicle != null)
+            {
+                return vehicle;
+            }
+            else
+            {
+                throw new ArgumentException("car does not exist");
+            }
         }
 
         public void FillMaxAir(string i_LiceseNumber)
@@ -114,40 +115,40 @@ namespace GarageLogic
 
             // ---------------------- watch out that we have 2 addFuel methods --------------------------------
             VehicleInGarage vehicleInGarage = GetVehicleInGarageByLicenseNumber(i_LiceseNumber);
-
-            RegularBike regularBike = vehicleInGarage.Vehicle as RegularBike;
-            if(regularBike != null)
+            FuelTank fuelTank = vehicleInGarage.Vehicle.EnergySupply as FuelTank;
+            if (fuelTank != null)
             {
-                regularBike.AddFuel(i_GasAmountToAdd, i_FuelType);
+                fuelTank.AddFuel(i_GasAmountToAdd, i_FuelType);
             }
             else
             {
-                RegularCar regularCar = vehicleInGarage.Vehicle as RegularCar;
-                if (regularCar != null)
-                {
-                    regularCar.AddFuel(i_GasAmountToAdd, i_FuelType);
-                }
+                throw new ArgumentException("Picked vehicle is not Fuel powered");
             }
-             
         }
         public void RechargeElectricVehicle(string i_LiceseNumber, float i_GasAmountToAdd)
         {
 
             VehicleInGarage vehicleInGarage = GetVehicleInGarageByLicenseNumber(i_LiceseNumber);
-            
-            ElectricBike regularBike = vehicleInGarage.Vehicle as ElectricBike;
-            if (regularBike != null)
+
+            Battery battery = vehicleInGarage.Vehicle.EnergySupply as Battery;
+            if(battery != null)
             {
-                regularBike.ChargeBattery(i_GasAmountToAdd);
+                battery.ChargeBattery(i_GasAmountToAdd);
             }
             else
             {
-                ElectricCar regularCar = vehicleInGarage.Vehicle as ElectricCar;
-                if (regularCar != null)
-                {
-                    regularCar.ChargeBattery(i_GasAmountToAdd);
-                }
+                throw new ArgumentException("Picked vehicle is not electric powered");
             }
+        }
+
+        public void VehicleDetailByLiceseNumber(string i_LiceseNumber)
+        {
+            VehicleInGarage vehicleInGarage = GetVehicleInGarageByLicenseNumber(i_LiceseNumber);
+            StringBuilder detail = new StringBuilder();
+            detail.Append("License Number = " + vehicleInGarage.Vehicle.LicenseNumber);
+            detail.Append("Model Name = " + vehicleInGarage.Vehicle.ModelName);
+            detail.Append("Owner Name = " + vehicleInGarage.OwnerName);
+            detail.Append("Car Status = " + vehicleInGarage.CarStatus.ToString());
 
         }
 

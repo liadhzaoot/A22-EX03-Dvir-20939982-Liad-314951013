@@ -6,39 +6,41 @@ using System.Threading.Tasks;
 
 namespace GarageLogic
 {
-    class FuelTank 
+    public class FuelTank : EnergySupply 
     {
-        private float m_CurrentLiterFuelCapacity;
-        private float m_MaxLiterFuelCapacity;
+        //private float m_CurrentLiterFuelCapacity;
+        //private float m_MaxLiterFuelCapacity;
         private EnumClass.eFuelType m_FuelType;
 
-        public FuelTank(float i_CurrentLiterFuelCapacity, float i_MaxLiterFuelCapacity, EnumClass.eFuelType i_FuelType)
+        public FuelTank(float i_CurrentLiterFuelCapacity, float i_MaxLiterFuelCapacity, EnumClass.eFuelType i_FuelType):
+            base(i_CurrentLiterFuelCapacity, i_MaxLiterFuelCapacity)
         {
-            m_CurrentLiterFuelCapacity = i_CurrentLiterFuelCapacity;
-            m_MaxLiterFuelCapacity= i_MaxLiterFuelCapacity;    
+            //m_CurrentLiterFuelCapacity = i_CurrentLiterFuelCapacity;
+            //m_MaxLiterFuelCapacity= i_MaxLiterFuelCapacity;    
             m_FuelType = i_FuelType;
         }
-        public FuelTank(float i_MaxLiterFuelCapacity, EnumClass.eFuelType i_FuelType)
+        public FuelTank(float i_MaxLiterFuelCapacity, EnumClass.eFuelType i_FuelType) : base(i_MaxLiterFuelCapacity)
         {
-            m_MaxLiterFuelCapacity = i_MaxLiterFuelCapacity;
+            //m_MaxLiterFuelCapacity = i_MaxLiterFuelCapacity;
             m_FuelType = i_FuelType;
 
         }
+
         public EnumClass.eFuelType FuelType
         {
             get { return this.m_FuelType; }
             set { this.m_FuelType = value; }
         }
-        public float CurrentLiterFuelCapacity
-        {
-            get { return this.m_CurrentLiterFuelCapacity; }
-            set { this.m_CurrentLiterFuelCapacity = value; }
-        }
-        public float MaxLiterFuelCapacity
-        {
-            get { return this.m_MaxLiterFuelCapacity; }
-            set { this.m_MaxLiterFuelCapacity = value; }
-        }
+        //public float CurrentLiterFuelCapacity
+        //{
+        //    get { return this.m_CurrentLiterFuelCapacity; }
+        //    set { this.m_CurrentLiterFuelCapacity = value; }
+        //}
+        //public float MaxLiterFuelCapacity
+        //{
+        //    get { return this.m_MaxLiterFuelCapacity; }
+        //    set { this.m_MaxLiterFuelCapacity = value; }
+        //}
 
         public void AddFuel(float i_FuelAmountToAdd, EnumClass.eFuelType i_FuelType)
         {
@@ -47,12 +49,7 @@ namespace GarageLogic
                 throw new ArgumentException("invalid fuel type");
 
             }
-            if (this.CurrentLiterFuelCapacity + i_FuelAmountToAdd > this.MaxLiterFuelCapacity)
-            {
-                throw new ValueOutOfRangeException(0, this.m_MaxLiterFuelCapacity);
-            }
-            this.CurrentLiterFuelCapacity += i_FuelAmountToAdd;
-
+            this.addEnergy(i_FuelAmountToAdd);
         }
     }
 }

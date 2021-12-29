@@ -12,12 +12,19 @@ namespace GarageLogic
         private string m_LicenseNumber;
         private float m_EnergyPrecentage;
         private List<Wheel> m_WheelsList;
-
+        private EnergySupply m_EnergySupply;
         public Vehicle(string i_ModelName, string i_LicenseNumber, int i_WheelsNumber)
         {
-            m_ModelName = i_ModelName;
-            m_LicenseNumber = i_LicenseNumber;
-            m_WheelsList = new List<Wheel>(i_WheelsNumber);
+            this.m_ModelName = i_ModelName;
+            this.m_LicenseNumber = i_LicenseNumber;
+            this.m_WheelsList = new List<Wheel>(i_WheelsNumber);
+        }
+        public Vehicle(string i_ModelName, string i_LicenseNumber, int i_WheelsNumber, EnergySupply i_EnergySupply)
+        {
+            this.m_ModelName = i_ModelName;
+            this.m_LicenseNumber = i_LicenseNumber;
+            this.m_WheelsList = new List<Wheel>(i_WheelsNumber);
+            this.m_EnergySupply = i_EnergySupply;
         }
         public Vehicle(int i_WheelsNumber, float i_MaxAirPressure)
         {
@@ -72,6 +79,7 @@ namespace GarageLogic
                 m_WheelsList = value;
             }
         }
+        public EnergySupply EnergySupply { get; set; }
         //public abstract void AddGas(float i_GasAmountToAdd, EnumClass.eFuelType i_GasType);
         public abstract List<string> GetStringListOfPrpeties();
     }
