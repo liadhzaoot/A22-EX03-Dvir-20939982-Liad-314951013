@@ -19,7 +19,10 @@ namespace GarageLogic
             m_CarColor = i_CarColor;
             m_NumberOfDoors = i_NumberOfDoors;
         }
-
+        public Car(int i_WheelsNumber, float i_MaxAirPressure) :
+        base(i_WheelsNumber, i_MaxAirPressure)
+        {
+        }
         public EnumClass.eColor CarColor
         {
             get

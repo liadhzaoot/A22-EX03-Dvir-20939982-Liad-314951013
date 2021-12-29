@@ -16,6 +16,13 @@ namespace GarageLogic
         {
             m_FuelTank = new FuelTank(i_CurrentLiterFuelCapacity, i_MaxLiterFuelCapacity, i_FuelType);
         }
+        public RegularBike(int i_WheelsNumber, float i_MaxAirPressure, EnumClass.eFuelType i_FuelType, float i_MaxLiterFuelCapacity) : 
+            base(i_WheelsNumber, i_MaxAirPressure)
+
+        {
+            m_FuelTank = new FuelTank(i_MaxLiterFuelCapacity, i_FuelType);
+        }
+
         public EnumClass.eFuelType FuelType
         {
             get { return this.m_FuelTank.FuelType; }

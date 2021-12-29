@@ -18,6 +18,10 @@ namespace GarageLogic
             this.m_CurrentAirPressure = i_CurrentAirPressure;
             this.m_MaxAirPressure = i_MaxAirPressure;
         }
+        public Wheel(float i_MaxAirPressure)
+        {
+            this.m_MaxAirPressure = i_MaxAirPressure;
+        }
         public void AirInflation(float i_AddAir)
         {
             float newAirPressure = i_AddAir + this.m_CurrentAirPressure;

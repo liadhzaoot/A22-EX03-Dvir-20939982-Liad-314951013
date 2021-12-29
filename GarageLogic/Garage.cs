@@ -9,14 +9,29 @@ namespace GarageLogic
     public class Garage
     {
         private List<VehicleInGarage> m_VehiclesInGarage;
+        private List<Vehicle> m_SupportedVehiclesList;
+
         public Garage(List<VehicleInGarage> i_Vehicles)
         {
+            initSupportedVehicles();
             this.m_VehiclesInGarage = i_Vehicles;
         }
         public Garage()
         {
+            initSupportedVehicles();
             m_VehiclesInGarage = new List<VehicleInGarage>();
         }
+
+        private void initSupportedVehicles()
+        {
+            m_SupportedVehiclesList.Add(new RegularBike(2, 30, EnumClass.eFuelType.Octan98, 5.8f));
+            m_SupportedVehiclesList.Add(new ElectricBike(2, 30, 2.3f));
+            m_SupportedVehiclesList.Add(new RegularCar(4, 29, EnumClass.eFuelType.Octan95, 48));
+            m_SupportedVehiclesList.Add(new ElectricCar(4, 29, 2.6f));
+            m_SupportedVehiclesList.Add(new RegularCar(16, 25, EnumClass.eFuelType.Soler, 130));               
+        }
+
+        public List<Vehicle> SupportedVehiclesList { get;}
 
         public void addVehicleToGarage(Vehicle i_Vehicle,string i_OwnerName, string i_OwnerPhoneNumber)
         {
@@ -118,9 +133,8 @@ namespace GarageLogic
         public void RechargeElectricVehicle(string i_LiceseNumber, float i_GasAmountToAdd)
         {
 
-            // ---------------------- watch out that we have 2 addFuel methods --------------------------------
             VehicleInGarage vehicleInGarage = GetVehicleInGarageByLicenseNumber(i_LiceseNumber);
-
+            
             ElectricBike regularBike = vehicleInGarage.Vehicle as ElectricBike;
             if (regularBike != null)
             {

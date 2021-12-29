@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace GarageLogic
 {
-    abstract class Track : Vehicle
+    public abstract class Track : Vehicle
     {
-        bool m_IsDrivesRefrigeratedContents;
-        float m_CargoVolume;
+        private bool m_IsDrivesRefrigeratedContents;
+        private float m_CargoVolume;
 
         public Track(string i_ModelName, string i_LicenseNumber, int i_WheelsNumber, 
             bool i_IsDrivesRefrigeratedContents, float i_CargoVolume) : 
@@ -17,6 +17,10 @@ namespace GarageLogic
         {
             m_CargoVolume = i_CargoVolume;
             m_IsDrivesRefrigeratedContents = i_IsDrivesRefrigeratedContents;
+        }
+        public Track(int i_WheelsNumber, float i_MaxAirPressure) :
+            base(i_WheelsNumber, i_MaxAirPressure)
+        {
         }
         public bool IsDrivesRefrigeratedContents 
         {

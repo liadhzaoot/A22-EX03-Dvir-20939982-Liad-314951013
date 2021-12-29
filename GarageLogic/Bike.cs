@@ -19,7 +19,10 @@ namespace GarageLogic
             m_LicenseType = i_LicenseType;
             m_EngineCapacity = i_EngineCapacity;    
         }
-
+        public Bike(int i_WheelsNumber, float i_MaxAirPressure) :
+            base(i_WheelsNumber, i_MaxAirPressure)
+        {
+        }
         //public Bike(int i_EngineCapacity,
         //            EnumClass.eLicenseTypes i_LicenseTypes,
         //            string i_ModwelName,

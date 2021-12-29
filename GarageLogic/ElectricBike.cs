@@ -17,6 +17,13 @@ namespace GarageLogic
         {
             m_Battery = new Battery(i_BatteryHourRemaning, i_MaxHourBattery);
         }
+        public ElectricBike(int i_WheelsNumber, float i_MaxAirPressure, float i_MaxHourBattery) :
+            base(i_WheelsNumber, i_MaxAirPressure)
+        {
+            m_Battery = new Battery(i_MaxHourBattery);
+
+        }
+
         public float BatteryHourRemaning
         {
             get

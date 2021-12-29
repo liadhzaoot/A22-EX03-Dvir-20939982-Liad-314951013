@@ -19,6 +19,15 @@ namespace GarageLogic
             m_LicenseNumber = i_LicenseNumber;
             m_WheelsList = new List<Wheel>(i_WheelsNumber);
         }
+        public Vehicle(int i_WheelsNumber, float i_MaxAirPressure)
+        {
+            m_WheelsList = new List<Wheel>(i_WheelsNumber);
+            for(int i = 0; i< i_WheelsNumber; i++)
+            {
+                Wheel wheel = new Wheel(i_MaxAirPressure);
+                m_WheelsList.Add(wheel);
+            }
+        }
         public string ModelName 
         {
             get
