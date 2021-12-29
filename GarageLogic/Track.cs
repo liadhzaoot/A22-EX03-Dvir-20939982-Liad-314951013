@@ -40,5 +40,15 @@ namespace GarageLogic
                 m_CargoVolume = value;
             }
         }
+
+        public override List<string> GetStringListOfPrpeties()
+        {
+            List<string> listOfProperties = new List<string>();
+            listOfProperties.Add("model name");
+            listOfProperties.Add("license number");
+            listOfProperties.Add("is drives refrigerated contents");
+            listOfProperties.Add("cargo volume");
+            return listOfProperties;
+        }
     }
 }

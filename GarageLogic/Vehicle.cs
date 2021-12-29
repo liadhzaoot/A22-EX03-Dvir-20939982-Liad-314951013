@@ -64,6 +64,6 @@ namespace GarageLogic
             }
         }
         //public abstract void AddGas(float i_GasAmountToAdd, EnumClass.eFuelType i_GasType);
-
+        public abstract List<string> GetStringListOfPrpeties();
     }
 }

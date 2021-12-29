@@ -45,6 +45,17 @@ namespace GarageLogic
         {
             m_Battery.ChargeBattery(i_AddElectricity);
         }
+
+        public override List<string> GetStringListOfPrpeties()
+        {
+            List<string> listOfProperties = new List<string>();
+            listOfProperties.Add("model name");
+            listOfProperties.Add("license number");
+            listOfProperties.Add("color");
+            listOfProperties.Add("number of doors");
+            listOfProperties.Add("battary hour remaining");
+            return listOfProperties;
+        }
     }
 }
 

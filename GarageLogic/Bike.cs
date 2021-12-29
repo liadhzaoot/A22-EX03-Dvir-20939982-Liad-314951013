@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace GarageLogic
 {
 
-    abstract class Bike : Vehicle
+    public abstract class Bike : Vehicle
     {
 
         private EnumClass.eLicenseType m_LicenseType;
@@ -53,6 +53,7 @@ namespace GarageLogic
                 m_LicenseType = value;
             }
         }
+
 
     }
 }

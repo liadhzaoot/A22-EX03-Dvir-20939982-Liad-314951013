@@ -36,5 +36,17 @@ namespace GarageLogic
         {
             this.m_FuelTank.AddFuel(i_GasAmountToAdd, i_GasType);
         }
+
+        public override List<string> GetStringListOfPrpeties()
+        {
+            List<string> listOfProperties = new List<string>();
+            listOfProperties.Add("model name");
+            listOfProperties.Add("license number");
+            listOfProperties.Add("color");
+            listOfProperties.Add("number of doors");
+            listOfProperties.Add("current fuel remaining");
+            return listOfProperties;
+            
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GarageLogic
 {
-    abstract class Car : Vehicle
+    public abstract class Car : Vehicle
     {
  
 
@@ -43,6 +43,8 @@ namespace GarageLogic
                 m_NumberOfDoors = value;
             }
         }
+
+        
 
     }
 }
