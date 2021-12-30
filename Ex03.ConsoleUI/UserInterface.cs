@@ -55,7 +55,7 @@ namespace Ex03.ConsoleUI
                     break;
                 case 2:
                     showLicenseNumbersInStatus();
-                    Thread.Sleep(3000);
+                    //Thread.Sleep(3000);
                     break;
                 case 3:
                     changeVehicleStatuses();
@@ -71,7 +71,7 @@ namespace Ex03.ConsoleUI
                     break;
                 case 7:
                     showFullInfo();
-                    Thread.Sleep(5000);
+                    //Thread.Sleep(5000);
                     break;
                 case 8:
                     s_ExitProgram = true;
@@ -86,14 +86,45 @@ namespace Ex03.ConsoleUI
             List<string> infoRequired;
             string licenseNumber, vehicleTypeNumber, ownerName, phoneNumber;
             int userVehicleChoice = 0;
+            Vehicle vehicleToCreate;
 
             licenseNumber = getLicenseNumber();
             if (m_Garage.GetVehicleInGarageByLicenseNumber(licenseNumber) == null)
             {
                 showSupportedVehicleInGarage();
                 userVehicleChoice = getUserVehicleChoice();
-                m_Garage.
+                vehicleToCreate = m_Garage.GetVehicleFromSupportedByIndex(userVehicleChoice-1);
+                getAllRequiredInfo(vehicleToCreate);
+            }
+        }
 
+        private void getAllRequiredInfo(Vehicle i_Vehicle)
+        {
+            int requireIndex = 0;
+            string userInput = "";
+            bool validInput;
+            Console.Clear();            
+
+            foreach (string require in i_Vehicle.RequiredInfo())
+            {
+                Console.Clear();
+                do
+                {
+                    try
+                    {
+                        userInput = getUserInput(require);
+                        i_Vehicle.CheckUserInput(userInput, requireIndex);
+                        requireIndex++;
+                        validInput = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.Clear();
+                        validInput = false;
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+                while (validInput == false);
             }
         }
 

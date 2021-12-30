@@ -31,7 +31,10 @@ namespace GarageLogic
             m_SupportedVehiclesList.Add(new Truck(16, 25, EnumClass.eFuelType.Soler, 130));               
         }
 
-
+        public Vehicle GetVehicleFromSupportedByIndex(int i_Index)
+        {
+            return SupportedVehiclesList[i_Index];
+        }
         public List<Vehicle> SupportedVehiclesList { get;}
 
         public void addVehicleToGarage(Vehicle i_Vehicle,string i_OwnerName, string i_OwnerPhoneNumber)
