@@ -63,6 +63,16 @@ namespace GarageLogic
                 m_MaxAirPressure = value;
             }
         }
+
+        public  List<string> RequiredInfo()
+        {
+            List<string> requiredInfo = new List<string>();
+
+            requiredInfo.Add("Please enter WHEEL'S MANUFACTURER NAME:");
+            requiredInfo.Add(string.Format("Please enter current WHEEL'S AIR PRESSURE (MAXIMUM: {0}):", m_MaxAirPressure));
+
+            return requiredInfo;
+        }
         public StringBuilder GetInfo()
         {
             StringBuilder info = new StringBuilder();

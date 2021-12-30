@@ -65,10 +65,14 @@ namespace GarageLogic
             info.Append("Number Of Doors = " + this.NumberOfDoors.ToString());
             return info;
         }
-
-        public override List<string> GetStringListOfPrpeties()
+        public override List<string> RequiredInfo()
         {
-            throw new NotImplementedException();
+            List<string> requiredInfo = base.RequiredInfoForVehicle();
+            requiredInfo.Add("Please choose color:\n" + EnumClass.GetEnumOptions(typeof(EnumClass.eColor)));
+            requiredInfo.Add("Please choose amount of doors:\n" + EnumClass.GetEnumOptions(typeof(EnumClass.eNumberOfDoors)));
+
+            return requiredInfo;
         }
+
     }
 }

@@ -39,6 +39,11 @@ namespace GarageLogic
             this.addEnergy(i_AddElectricity);
         }
 
+        public override List<string> RequiredInfo()
+        {
+            List<string> requiredInfo = base.RequiredInfoForVehicle();
+            return requiredInfo;
+        }
         public override StringBuilder GetInfo()
         {
             StringBuilder info = new StringBuilder();

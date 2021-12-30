@@ -101,6 +101,14 @@ namespace GarageLogic
             }
         }
 
+        public List<string> GetInformationRequiredForThisTypeOfVehicle(string i_LicenseNumber)
+        {
+            List<string> requiredInfo;
+            Vehicle vehicle = GetVehicleInGarageByLicenseNumber(i_LicenseNumber);
+            requiredInfo = Vehicle.RequiredInfoForCreation();
+            return requiredInfo;
+        }
+
         public void FillMaxAir(string i_LiceseNumber)
         {
             VehicleInGarage vehicleInGarage = GetVehicleInGarageByLicenseNumber(i_LiceseNumber);

@@ -59,5 +59,11 @@ namespace GarageLogic
             info.Append("Fuel Type = " + this.FuelType.ToString());
             return info;
         }
+
+        public override List<string> RequiredInfo()
+        {
+            List<string> requiredInfo = base.RequiredInfoForVehicle();
+            return requiredInfo;
+        }
     }
 }

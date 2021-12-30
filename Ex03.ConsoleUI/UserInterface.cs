@@ -10,21 +10,25 @@ namespace Ex03.ConsoleUI
     class UserInterface
     {
         private Garage m_Garage;
-        private List<string> m_MainMenu;
+        private MainMenu m_MainMenu;
         private List<string> m_SupportedVehicles;
+        private static s_ExitProgram = false;
+
         public UserInterface()
         {
             m_Garage = new Garage();
+            m_MainMenu = new MainMenu();
             //m_SupportedVehicle = m_Garage.SupportedVehicles;
         }
 
         public void Start()
         {
             Console.WriteLine("Welcome To Our Garage");
-            string usreInput = "";
-            while (!usreInput.Equals('q'))
+            int intUserInput = 0;
+            while (s_ExitProgram == false)
             {
-                usreInput = getUserInput("Please Add Your Vehicle to our Garage\nTo Quit Please enter 'q'");
+                intUserInput = m_MainMenu.ValidateMenuChoice();
+                userSelectionOnManu(userMenuSelection);
 
             }
         }
@@ -41,18 +45,83 @@ namespace Ex03.ConsoleUI
             return userInput;
         }
 
-        private void showMenu()
+        public void userSelectionOnManu(int i_userSelection)
         {
-            if (m_SupportedVehicles != null)
+            Console.Clear();
+            switch (i_userSelection)
             {
-                for (int i = 0; i < m_SupportedVehicles.Count; i++)
-                {
-                    Console.WriteLine("Press {0} To Add {1}", i+1, m_SupportedVehicles[i]);
-                }
+                case 1:
+                    addNewVehicleToGarage();
+                    break;
+                case 2:
+                    showLicenseNumbersInStatus();
+                    Thread.Sleep(3000);
+                    break;
+                case 3:
+                    changeVehicleStatuses();
+                    break;
+                case 4:
+                    filVehicleWheelsAirToMax();
+                    break;
+                case 5:
+                    refuelVehicle();
+                    break;
+                case 6:
+                    chargeElectricVehicle();
+                    break;
+                case 7:
+                    showFullInfo();
+                    Thread.Sleep(5000);
+                    break;
+                case 8:
+                    s_ExitProgram = true;
+                    break;
+                default:
+                    throw new ValueOutOfRangeException(8, 1);
             }
         }
 
-        
+        private void addNewVehicleToGarage()
+        {
+            string licenseNumber = getLicenseNumber()
 
+
+               
+        }
+
+        private string getLicenseNumber()
+        {
+
+        }
+
+        private void showLicenseNumbersInStatus()
+        {
+
+        }
+
+        private void changeVehicleStatuses()
+        {
+
+        }
+
+        private void filVehicleWheelsAirToMax()
+        {
+
+        }
+
+        private void refuelVehicle()
+        {
+
+        }
+
+        private void chargeElectricVehicle()
+        {
+
+        }
+
+        private void showFullInfo()
+        {
+
+        }
     }
 }

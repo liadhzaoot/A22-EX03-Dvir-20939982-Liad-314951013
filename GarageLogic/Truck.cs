@@ -44,15 +44,15 @@ namespace GarageLogic
                 m_CargoVolume = value;
             }
         }
-        
-        public override List<string> GetStringListOfPrpeties()
+
+
+        public override List<string> RequiredInfo()
         {
-            List<string> listOfProperties = new List<string>();
-            listOfProperties.Add("model name");
-            listOfProperties.Add("license number");
-            listOfProperties.Add("is drives refrigerated contents");
-            listOfProperties.Add("cargo volume");
-            return listOfProperties;
+            List<string> requiredInfo = base.RequiredInfoForVehicle();
+            requiredInfo.Add("Is the truck carrying refrigerated contents?\n" +  "yes or no :");
+            requiredInfo.Add("Please enter truck's cargo volume:");
+
+            return requiredInfo;
         }
 
         public override StringBuilder GetInfo()
