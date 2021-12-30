@@ -101,13 +101,13 @@ namespace GarageLogic
             }
         }
 
-        public List<string> GetInformationRequiredForThisTypeOfVehicle(string i_LicenseNumber)
-        {
-            List<string> requiredInfo;
-            Vehicle vehicle = GetVehicleInGarageByLicenseNumber(i_LicenseNumber);
-            requiredInfo = Vehicle.RequiredInfoForCreation();
-            return requiredInfo;
-        }
+        //public List<string> GetInformationRequiredForThisTypeOfVehicle(string i_LicenseNumber)
+        //{
+        //    List<string> requiredInfo;
+        //    Vehicle vehicle = GetVehicleInGarageByLicenseNumber(i_LicenseNumber);
+        //    requiredInfo = Vehicle.RequiredInfoForCreation();
+        //    return requiredInfo;
+        //}
 
         public void FillMaxAir(string i_LiceseNumber)
         {
@@ -149,15 +149,12 @@ namespace GarageLogic
             }
         }
 
-        public void VehicleDetailByLiceseNumber(string i_LiceseNumber)
+        public StringBuilder VehicleDetailByLiceseNumber(string i_LiceseNumber)
         {
             VehicleInGarage vehicleInGarage = GetVehicleInGarageByLicenseNumber(i_LiceseNumber);
             StringBuilder detail = new StringBuilder();
-            detail.Append("License Number = " + vehicleInGarage.Vehicle.LicenseNumber);
-            detail.Append("Model Name = " + vehicleInGarage.Vehicle.ModelName);
-            detail.Append("Owner Name = " + vehicleInGarage.OwnerName);
-            detail.Append("Car Status = " + vehicleInGarage.CarStatus.ToString());
-
+            detail = vehicleInGarage.GetInfo();
+            return detail;
         }
 
     }
