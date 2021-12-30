@@ -35,6 +35,15 @@ namespace GarageLogic
             }
         }
 
+        public virtual List<string> RequiredInfoForVehicleInGarage()
+        {
+            List<string> requiredInfo = new List<string>();
+            requiredInfo = this.Vehicle.RequiredInfo();
+            requiredInfo.Add("Please enter owner name:");
+            requiredInfo.Add("Please enter owner phone number:");
+            return requiredInfo;
+        }
+
         public string OwnerName
         {
             get
