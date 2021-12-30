@@ -51,7 +51,7 @@ namespace GarageLogic
             }
             set
             {
-                if(m_EngineCapacity <= 0)
+                if(value <= 0)
                 {
                     throw new ArgumentException("invalid engine capacity");
                 }
@@ -68,7 +68,7 @@ namespace GarageLogic
             }
             set
             {
-                if (Enum.IsDefined(typeof(EnumClass.eFuelType), value) == false)
+                if (!Enum.IsDefined(typeof(EnumClass.eLicenseType), value))
                 {
                     throw new ArgumentException("License type not valid");
                 }

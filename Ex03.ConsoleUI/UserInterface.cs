@@ -96,11 +96,22 @@ namespace Ex03.ConsoleUI
 
             catch (Exception e)
             {
+                m_Garage.GetVehicleInGarageByLicenseNumber(licenseNumber);
+            }
+            catch
+            {
                 showSupportedVehicleInGarage();
                 userVehicleChoice = getUserVehicleChoice();
-                vehicleToCreate = m_Garage.GetVehicleFromSupportedByIndex(userVehicleChoice-1);
+                vehicleToCreate = m_Garage.GetVehicleFromSupportedByIndex(userVehicleChoice - 1);
                 getAllRequiredInfo(vehicleToCreate);
             }
+            //if (m_Garage.GetVehicleInGarageByLicenseNumber(licenseNumber) == null)
+            //{
+            //    showSupportedVehicleInGarage();
+            //    userVehicleChoice = getUserVehicleChoice();
+            //    vehicleToCreate = m_Garage.GetVehicleFromSupportedByIndex(userVehicleChoice-1);
+            //    getAllRequiredInfo(vehicleToCreate);
+            //}
         }
 
         private void getAllRequiredInfo(Vehicle i_Vehicle)
@@ -142,7 +153,7 @@ namespace Ex03.ConsoleUI
 
             while (validChoice == false)
             {
-                userInput = getUserInput(string.Format("Please enter your chioce (1-{0}", supportedTypeCount));
+                userInput = getUserInput(string.Format("Please enter your chioce (1-{0})", supportedTypeCount));
                 validChoice = int.TryParse(userInput, out intUserInput);
                 if (validChoice == true && intUserInput >= 1 && intUserInput <= supportedTypeCount )
                 {
