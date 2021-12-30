@@ -48,7 +48,11 @@ namespace GarageLogic
 
         public enum eVehicleType
         {
-            
+            Regular_Bike,
+            Electric_Bike,
+            Regular_Car,
+            Electric_Car,
+            Truck
         }
 
         public static string GetEnumOptions(Type i_EnumType)
