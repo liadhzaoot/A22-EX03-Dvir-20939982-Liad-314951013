@@ -79,6 +79,17 @@ namespace GarageLogic
                 m_WheelsList = value;
             }
         }
+        public abstract StringBuilder GetInfo();
+
+        public StringBuilder GetVehicleInfo()
+        {
+            StringBuilder info = new StringBuilder();
+            this.EnergySupply.GetInfo();
+            info.Append("License Number = " + this.LicenseNumber);
+            info.Append("Model Name = " + this.ModelName);
+            return info;
+
+        }
         public EnergySupply EnergySupply { get; set; }
         //public abstract void AddGas(float i_GasAmountToAdd, EnumClass.eFuelType i_GasType);
         public abstract List<string> GetStringListOfPrpeties();

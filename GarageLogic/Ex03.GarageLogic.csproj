@@ -49,12 +49,12 @@
     <Compile Include="Garage.cs" />
     <Compile Include="GarageManager.cs" />
     <Compile Include="RegularTrack.cs" />
+    <Compile Include="Truck.cs" />
     <Compile Include="ValueOutOfRangeException.cs" />
     <Compile Include="VehicleInGarage.cs" />
     <Compile Include="FuelTank.cs" />
     <Compile Include="RegularBike.cs" />
     <Compile Include="RegularCar.cs" />
-    <Compile Include="Track.cs" />
     <Compile Include="Vehicle.cs" />
     <Compile Include="Wheel.cs" />
   </ItemGroup>

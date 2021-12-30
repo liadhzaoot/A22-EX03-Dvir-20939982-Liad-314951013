@@ -63,5 +63,12 @@ namespace GarageLogic
                 m_MaxAirPressure = value;
             }
         }
+        public StringBuilder GetInfo()
+        {
+            StringBuilder info = new StringBuilder();
+            info.Append("Air Pressure = " + this.MaxAirPressure);
+            info.Append("Manufacture Name = " + this.ManufactureName);
+            return info;
+        }
     }
 }

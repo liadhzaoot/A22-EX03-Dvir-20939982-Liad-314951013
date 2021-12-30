@@ -40,5 +40,12 @@ namespace GarageLogic
             }
             this.m_CurrentEnergy += i_EnergyToAdd;
         }
+        public abstract StringBuilder GetInfo();
+        public StringBuilder GetEnergySupplyInfo()
+        {
+            StringBuilder info = new StringBuilder();
+            info.Append("Current Energy = " + this.CurrentEnergy);
+            return info;
+        }
     }
 }

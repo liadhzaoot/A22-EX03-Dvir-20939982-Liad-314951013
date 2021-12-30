@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GarageLogic
 {
-    public class RegularTrack : Track
+    public class RegularTrack : Truck
     {
         private FuelTank m_FuelTank;
         public RegularTrack(string i_ModelName, string i_LicenseNumber, int i_WheelsNumber,

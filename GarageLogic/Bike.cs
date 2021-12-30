@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace GarageLogic
 {
 
-    public abstract class Bike : Vehicle
+    public class Bike : Vehicle
     {
 
         private EnumClass.eLicenseType m_LicenseType;
@@ -19,9 +19,19 @@ namespace GarageLogic
             m_LicenseType = i_LicenseType;
             m_EngineCapacity = i_EngineCapacity;    
         }
-        public Bike(int i_WheelsNumber, float i_MaxAirPressure) :
-            base(i_WheelsNumber, i_MaxAirPressure)
+
+
+        // fuel engine
+        public Bike(int i_WheelsNumber, float i_MaxAirPressure, EnumClass.eFuelType i_FuelType, float i_MaxLiterFuelCapacity) :
+        base(i_WheelsNumber, i_MaxAirPressure)
         {
+            this.EnergySupply = new FuelTank(i_MaxLiterFuelCapacity, i_FuelType);
+        }
+        // battery engine
+        public Bike(int i_WheelsNumber, float i_MaxAirPressure, float i_MaxLiterFuelCapacity) :
+        base(i_WheelsNumber, i_MaxAirPressure)
+        {
+            this.EnergySupply = new Battery(i_MaxLiterFuelCapacity);
         }
         //public Bike(int i_EngineCapacity,
         //            EnumClass.eLicenseTypes i_LicenseTypes,
@@ -57,6 +67,20 @@ namespace GarageLogic
             }
         }
 
+        public override StringBuilder GetInfo()
+        {
+            StringBuilder info = new StringBuilder();
+            info = this.GetVehicleInfo();
+            info.Append(this.EnergySupply.GetInfo());
+            info.Append("License Type = " + this.LicenseType.ToString());
+            info.Append("Engine Capacity = " + this.EngineCapacity.ToString());
+            return info;
 
+        }
+
+        public override List<string> GetStringListOfPrpeties()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

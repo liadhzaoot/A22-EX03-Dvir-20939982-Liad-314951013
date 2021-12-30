@@ -51,5 +51,13 @@ namespace GarageLogic
             }
             this.addEnergy(i_FuelAmountToAdd);
         }
+
+        public override StringBuilder GetInfo()
+        {
+            StringBuilder info = new StringBuilder();
+            info = this.GetEnergySupplyInfo();
+            info.Append("Fuel Type = " + this.FuelType.ToString());
+            return info;
+        }
     }
 }

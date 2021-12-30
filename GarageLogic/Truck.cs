@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace GarageLogic
 {
-    public abstract class Track : Vehicle
+    public class Truck : Vehicle
     {
         private bool m_IsDrivesRefrigeratedContents;
         private float m_CargoVolume;
 
-        public Track(string i_ModelName, string i_LicenseNumber, int i_WheelsNumber, 
+        public Truck(string i_ModelName, string i_LicenseNumber, int i_WheelsNumber, 
             bool i_IsDrivesRefrigeratedContents, float i_CargoVolume) : 
             base(i_ModelName, i_LicenseNumber, i_WheelsNumber)
         {
             m_CargoVolume = i_CargoVolume;
             m_IsDrivesRefrigeratedContents = i_IsDrivesRefrigeratedContents;
         }
-        public Track(int i_WheelsNumber, float i_MaxAirPressure) :
+        public Truck(int i_WheelsNumber, float i_MaxAirPressure) :
             base(i_WheelsNumber, i_MaxAirPressure)
         {
         }
@@ -44,7 +44,7 @@ namespace GarageLogic
                 m_CargoVolume = value;
             }
         }
-
+        
         public override List<string> GetStringListOfPrpeties()
         {
             List<string> listOfProperties = new List<string>();
@@ -53,6 +53,15 @@ namespace GarageLogic
             listOfProperties.Add("is drives refrigerated contents");
             listOfProperties.Add("cargo volume");
             return listOfProperties;
+        }
+
+        public override StringBuilder GetInfo()
+        {
+            StringBuilder info = new StringBuilder();
+            info = this.GetVehicleInfo();
+            info.Append("Is drives refrigerated contents = " + this.IsDrivesRefrigeratedContents);
+            info.Append("Cargo Volume = " + this.CargoVolume);
+            return info;
         }
     }
 }

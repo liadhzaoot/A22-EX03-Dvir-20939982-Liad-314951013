@@ -20,6 +20,7 @@ namespace GarageLogic
         {
             
         }
+      
 
         //public float BatteryHourRemaning
         //{
@@ -38,6 +39,11 @@ namespace GarageLogic
             this.addEnergy(i_AddElectricity);
         }
 
-
+        public override StringBuilder GetInfo()
+        {
+            StringBuilder info = new StringBuilder();
+            info = this.GetEnergySupplyInfo();
+            return info;
+        }
     }
 }
