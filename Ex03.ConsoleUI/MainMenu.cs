@@ -40,12 +40,12 @@ namespace Ex03.ConsoleUI
         {
             bool validChoice = false;
             string usreInput = "";
-            int intUserInput;
+            int intUserInput = 0;
             while(validChoice == false)
             {
                 Console.WriteLine("Please enter your chioce (1-{0}", m_Options.Count);
-                UserInterface = Console.ReadLine();
-                validChoice = int.TryParse(userInput, out intUserInput);
+                usreInput = Console.ReadLine();
+                validChoice = int.TryParse(usreInput, out intUserInput);
             }
 
             return intUserInput;

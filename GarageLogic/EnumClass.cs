@@ -46,6 +46,15 @@ namespace GarageLogic
             Soler
         }
 
+        public enum eVehicleType
+        {
+            Regular_Bike,
+            Electric_Bike,
+            Regular_Car,
+            Electric_Car,
+            Truck
+        }
+
         public static string GetEnumOptions(Type i_EnumType)
         {
             if (!typeof(Enum).IsAssignableFrom(i_EnumType))
@@ -55,7 +64,7 @@ namespace GarageLogic
 
             string optionsForPick = string.Empty;
             int optionNumber = 1;
-            foreach (var type in Enum.GetNames(i_EnumType))
+            foreach (string type in Enum.GetNames(i_EnumType))
             {
                 optionsForPick += "(" + optionNumber.ToString() + ")" + type + " ";
                 optionNumber++;
@@ -63,6 +72,8 @@ namespace GarageLogic
 
             return optionsForPick;
         }
+
+
 
     }
 }

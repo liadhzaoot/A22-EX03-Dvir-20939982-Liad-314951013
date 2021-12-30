@@ -55,7 +55,7 @@ namespace Ex03.ConsoleUI
                     break;
                 case 2:
                     showLicenseNumbersInStatus();
-                    Thread.Sleep(3000);
+                    //Thread.Sleep(3000);
                     break;
                 case 3:
                     changeVehicleStatuses();
@@ -71,7 +71,7 @@ namespace Ex03.ConsoleUI
                     break;
                 case 7:
                     showFullInfo();
-                    Thread.Sleep(5000);
+                    //Thread.Sleep(5000);
                     break;
                 case 8:
                     s_ExitProgram = true;
@@ -83,16 +83,99 @@ namespace Ex03.ConsoleUI
 
         private void addNewVehicleToGarage()
         {
-            foreach(string requireInfo in m_Garage.)
+            List<string> infoRequired;
+            string licenseNumber, vehicleTypeNumber, ownerName, phoneNumber;
+            int userVehicleChoice = 0;
+            Vehicle vehicleToCreate;
 
-
-               
+            licenseNumber = getLicenseNumber();
+            if (m_Garage.GetVehicleInGarageByLicenseNumber(licenseNumber) == null)
+            {
+                showSupportedVehicleInGarage();
+                userVehicleChoice = getUserVehicleChoice();
+                vehicleToCreate = m_Garage.GetVehicleFromSupportedByIndex(userVehicleChoice-1);
+                getAllRequiredInfo(vehicleToCreate);
+            }
         }
 
-        private string getLicenseNumber()
+        private void getAllRequiredInfo(Vehicle i_Vehicle)
         {
-            
+            int requireIndex = 0;
+            string userInput = "";
+            bool validInput;
+            Console.Clear();            
 
+            foreach (string require in i_Vehicle.RequiredInfo())
+            {
+                Console.Clear();
+                do
+                {
+                    try
+                    {
+                        userInput = getUserInput(require);
+                        i_Vehicle.CheckUserInput(userInput, requireIndex);
+                        requireIndex++;
+                        validInput = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.Clear();
+                        validInput = false;
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+                while (validInput == false);
+            }
+        }
+
+        private int getUserVehicleChoice()
+        {
+            int supportedTypeCount = Enum.GetNames(typeof(EnumClass.eVehicleType)).Length;
+            int intUserInput = 0;
+            string userInput = "";
+            bool validChoice = false;
+
+            while (validChoice == false)
+            {
+                userInput = getUserInput(string.Format("Please enter your chioce (1-{0}", supportedTypeCount));
+                validChoice = int.TryParse(userInput, out intUserInput);
+                if (validChoice == true && intUserInput >= 1 && intUserInput <= supportedTypeCount )
+                {
+                    validChoice = true;
+                }
+            }
+
+            return intUserInput;
+        }
+
+        private void showSupportedVehicleInGarage()
+        {
+            Console.Clear();
+            Console.WriteLine(EnumClass.GetEnumOptions(typeof(EnumClass.eVehicleType)));
+        }
+
+        private static string getLicenseNumber()
+        {
+            Console.Clear();
+            bool valid = false;
+            string licenseNumber = "";
+            do
+            {
+                Console.Write("Please enter license number: ");
+                licenseNumber = Console.ReadLine();
+                if (licenseNumber != "")
+                {
+                    valid = true;
+                }
+                else
+                {
+                    valid = false;
+                    Console.Clear();
+                }
+            }
+            while (valid == false);
+
+            return licenseNumber;
         }
 
         private void showLicenseNumbersInStatus()
