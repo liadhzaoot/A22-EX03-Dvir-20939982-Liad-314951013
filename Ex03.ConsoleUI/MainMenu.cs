@@ -50,7 +50,7 @@ namespace Ex03.ConsoleUI
                     Console.WriteLine("Please enter your chioce (1-{0})", m_Options.Count);
                     usreInput = Console.ReadLine();
                     validChoice = int.TryParse(usreInput, out intUserInput);
-                    UserInterface.validateInputByRange(intUserInput, 1, m_Options.Count);
+                    UserInterface.ValidateInputByRange(intUserInput, 1, m_Options.Count);
                 }
                 catch (Exception ex)
                 {

@@ -235,6 +235,7 @@ namespace Ex03.ConsoleUI
             try
             {
                 m_Garage.ChangeStatus(licenseNumber, eVehicleStatus);
+                Console.WriteLine("Your vehicle's status was changed");
             }
             catch(Exception ex)
             {
@@ -249,6 +250,7 @@ namespace Ex03.ConsoleUI
             try
             {
                 m_Garage.FillMaxAir(licenseNumber);
+                Console.WriteLine("Your air wheels is up to max");
             }
             catch (Exception ex)
             {
@@ -262,34 +264,32 @@ namespace Ex03.ConsoleUI
             string licenseNumber = getLicenseNumber();
             int userTypeOfFuel = getInputFromTypeOfEnum(typeof(EnumClass.eFuelType));
             EnumClass.eFuelType eFuelType = (EnumClass.eFuelType)(userTypeOfFuel);
-            bool validChoice = false;
+            bool endWhile = false;
             string usreInput = "";
-            int intUserInput = 0;
-            while (validChoice == false)
+            float floatUserInput = 0;
+            while (endWhile == false)
             {
                 try
                 {
-                    usreInput = getUserInput("Please enter how many liiters of fuel you want to add");
-                    validChoice = int.TryParse(usreInput, out intUserInput);
+                    usreInput = getUserInput("Please enter how many litters of fuel you want to add");
+                    float.TryParse(usreInput, out floatUserInput);
+                    m_Garage.RefuelVehicle(licenseNumber, eFuelType, floatUserInput);
+                    Console.WriteLine("Your vehicle was refuel");
+                    endWhile = true;
+                }
+                catch(ArgumentException ex)
+                {
+                    Console.Clear();
+                    endWhile = true;
+                    Console.WriteLine(ex.Message);
                 }
                 catch (Exception ex)
                 {
                     Console.Clear();
-                    validChoice = false;
+                    endWhile = false;
                     Console.WriteLine(ex.Message);
                 }
             }
-
-            try
-            {
-                m_Garage.RefuelVehicle(licenseNumber, eFuelType, intUserInput);
-            }
-            catch (Exception ex)
-            {
-                Console.Clear();
-                Console.WriteLine(ex.Message);
-            }
-
         }
 
         private int getInputFromTypeOfEnum(Type i_TypeOfEnumClass)
@@ -301,7 +301,7 @@ namespace Ex03.ConsoleUI
 
             while (validChoice == false)
             {
-                Console.WriteLine(EnumClass.GetEnumOptions(typeof(EnumClass.eVehicleStatus)));
+                Console.WriteLine(EnumClass.GetEnumOptions(i_TypeOfEnumClass));
                 userInput = getUserInput(string.Format("Please enter your chioce (1-{0})", sizeOfEnumType));
                 int.TryParse(userInput, out intUserInput);
                 try
@@ -322,32 +322,32 @@ namespace Ex03.ConsoleUI
         private void chargeElectricVehicle()
         {
             string licenseNumber = getLicenseNumber();
-            bool validChoice = false;
+            bool endWhile = false;
             string usreInput = "";
-            int intUserInput = 0;
-            while (validChoice == false)
+            float floatUserInput = 0;
+
+            while (endWhile == false)
             {
                 try
                 {
                     usreInput = getUserInput("Please enter how many minutes of charge you want to add");
-                    validChoice = int.TryParse(usreInput, out intUserInput);
+                    float.TryParse(usreInput, out floatUserInput);
+                    m_Garage.RechargeElectricVehicle(licenseNumber, floatUserInput);
+                    Console.WriteLine("Your vehicle was recharged");
+                    endWhile = true;
+                }
+                catch (ArgumentException ex)
+                {
+                    Console.Clear();
+                    endWhile = true;
+                    Console.WriteLine(ex.Message);
                 }
                 catch (Exception ex)
                 {
                     Console.Clear();
-                    validChoice = false;
+                    endWhile = false;
                     Console.WriteLine(ex.Message);
                 }
-            }
-
-            try
-            {
-                m_Garage.RechargeElectricVehicle(licenseNumber, intUserInput);
-            }
-            catch (Exception ex)
-            {
-                Console.Clear();
-                Console.WriteLine(ex.Message);
             }
         }
 
