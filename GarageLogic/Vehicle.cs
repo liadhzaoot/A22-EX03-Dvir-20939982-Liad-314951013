@@ -112,7 +112,8 @@ namespace GarageLogic
         public StringBuilder GetVehicleInfo()
         {
             StringBuilder info = new StringBuilder();
-            this.EnergySupply.GetInfo();
+            info = this.EnergySupply.GetInfo();
+            info.Append(this.WheelsList[0].GetInfo());
             info.Append("License Number = " + this.LicenseNumber + "\n");
             info.Append("Model Name = " + this.ModelName + "\n");
             return info;

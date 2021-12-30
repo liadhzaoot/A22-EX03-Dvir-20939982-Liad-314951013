@@ -58,7 +58,7 @@ namespace GarageLogic
             {
                 if (value > this.MaxAirPressure || value < 0)
                 {
-                    throw new ValueOutOfRangeException(this.MaxAirPressure, 0);
+                    throw new ValueOutOfRangeException(0,this.MaxAirPressure);
                 }
                 else
                 {
