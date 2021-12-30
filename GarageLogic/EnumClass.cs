@@ -10,7 +10,7 @@ namespace GarageLogic
     {
         public enum eColor
         {
-            Red,
+            Red = 1,
             White,
             Black,
             Blue
@@ -18,7 +18,7 @@ namespace GarageLogic
 
         public enum eNumberOfDoors
         {
-            Two,
+            Two = 1,
             Three,
             Four,
             Five
@@ -26,21 +26,21 @@ namespace GarageLogic
 
         public enum eLicenseType
         {
-            A,
+            A = 1,
             A2,
             AA,
             B
         }
         public enum eVehicleStatus
         {
-            InRepair,
+            InRepair = 1,
             FixedCar,
             Paid,
             NoStatus
         }
         public enum eFuelType
         {
-            Octan95,
+            Octan95 = 1,
             Octan96,
             Octan98,
             Soler
@@ -48,7 +48,7 @@ namespace GarageLogic
 
         public enum eVehicleType
         {
-            Regular_Bike,
+            Regular_Bike = 1,
             Electric_Bike,
             Regular_Car,
             Electric_Car,

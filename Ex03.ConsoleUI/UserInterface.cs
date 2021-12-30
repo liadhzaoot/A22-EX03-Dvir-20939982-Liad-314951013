@@ -78,7 +78,7 @@ namespace Ex03.ConsoleUI
                     break;
                 case 7:
                     showFullInfo();
-                    Thread.Sleep(5000);
+                    Thread.Sleep(15000);
                     break;
                 case 8:
                     s_ExitProgram = true;
@@ -108,7 +108,7 @@ namespace Ex03.ConsoleUI
             {
                 showSupportedVehicleInGarage();
                 userVehicleChoice = getUserVehicleChoice();
-                vehicleToCreate = m_Garage.GetVehicleFromSupportedByIndex(userVehicleChoice - 1);
+                vehicleToCreate = m_Garage.GetVehicleFromSupportedByIndex(userVehicleChoice);
                 vehicleToCreate.LicenseNumber = licenseNumber;
                 vehicleInGarage.Vehicle = vehicleToCreate;
                 getAllRequiredInfo(vehicleInGarage);
@@ -218,7 +218,7 @@ namespace Ex03.ConsoleUI
         private void  showLicenseNumbersWithStatus()
         {
             int userFilterChice = getInputFromTypeOfEnum(typeof(EnumClass.eVehicleStatus));
-            EnumClass.eVehicleStatus eVehicleStatus = (EnumClass.eVehicleStatus)(userFilterChice - 1);
+            EnumClass.eVehicleStatus eVehicleStatus = (EnumClass.eVehicleStatus)(userFilterChice);
             List<string> licenseNumberByStatuse = m_Garage.GetLicenseNumbersByVehicleStatus(eVehicleStatus);
             Console.Clear();
             Console.WriteLine("The Licenses numbers are:");
@@ -232,7 +232,7 @@ namespace Ex03.ConsoleUI
         {
             string licenseNumber = getLicenseNumber();
             int userStatusToChange = getInputFromTypeOfEnum(typeof(EnumClass.eVehicleStatus));
-            EnumClass.eVehicleStatus eVehicleStatus = (EnumClass.eVehicleStatus)(userStatusToChange - 1);
+            EnumClass.eVehicleStatus eVehicleStatus = (EnumClass.eVehicleStatus)(userStatusToChange);
 
             try
             {
@@ -263,7 +263,7 @@ namespace Ex03.ConsoleUI
         {
             string licenseNumber = getLicenseNumber();
             int userTypeOfFuel = getInputFromTypeOfEnum(typeof(EnumClass.eFuelType));
-            EnumClass.eFuelType eFuelType = (EnumClass.eFuelType)(userTypeOfFuel - 1);
+            EnumClass.eFuelType eFuelType = (EnumClass.eFuelType)(userTypeOfFuel);
             bool validChoice = false;
             string usreInput = "";
             int intUserInput = 0;
