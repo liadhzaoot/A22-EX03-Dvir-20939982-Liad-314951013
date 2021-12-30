@@ -105,7 +105,6 @@ namespace Ex03.ConsoleUI
 
             catch
             {
-                showSupportedVehicleInGarage();
                 userVehicleChoice = getUserVehicleChoice();
                 vehicleToCreate = m_Garage.GetVehicleFromSupportedByIndex(userVehicleChoice);
                 vehicleToCreate.LicenseNumber = licenseNumber;
@@ -148,41 +147,12 @@ namespace Ex03.ConsoleUI
 
         private int getUserVehicleChoice()
         {
-            int supportedTypeCount = Enum.GetNames(typeof(EnumClass.eVehicleType)).Length;
-            int intUserInput = 0;
-            string userInput = "";
-            bool validChoice = false;
-
-            while (validChoice == false)
-            {
-                
-                userInput = getUserInput(string.Format("Please enter your chioce (1-{0})", supportedTypeCount));
-                int.TryParse(userInput, out intUserInput);
-                try 
-                {
-                    ValidateInputByRange(intUserInput, 1, supportedTypeCount);
-                    validChoice = true;
-                }
-                catch(Exception ex)
-                {
-                    Console.Clear();
-                    Console.WriteLine(ex.Message);
-                    showSupportedVehicleInGarage();
-
-                }
-            }
-
-            return intUserInput;
+            Console.WriteLine("Our Garage support these Vehicles");
+            int intVehicleType = getInputFromTypeOfEnum(typeof(EnumClass.eVehicleType));
+            return intVehicleType;
         }
 
         
-
-        private void showSupportedVehicleInGarage()
-        {
-            Console.WriteLine("Our Garage support these Vehicles");
-            Console.WriteLine(EnumClass.GetEnumOptions(typeof(EnumClass.eVehicleType)));
-        }
-
         private static string getLicenseNumber()
         {
             Console.Clear();
