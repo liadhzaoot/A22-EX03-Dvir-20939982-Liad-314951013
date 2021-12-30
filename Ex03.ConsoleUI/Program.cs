@@ -11,9 +11,8 @@ namespace Ex03.ConsoleUI
     {
        public static void Main()
         {
-            Console.WriteLine(EnumClass.eNumberOfDoors.Four.ToString());
-            //UserInterface userInterface = new UserInterface();
-            //userInterface.Start();
+            UserInterface userInterface = new UserInterface();
+            userInterface.Start();
 
         }
     }

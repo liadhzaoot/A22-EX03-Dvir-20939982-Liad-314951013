@@ -24,6 +24,7 @@ namespace GarageLogic
 
         private void initSupportedVehicles()
         {
+            m_SupportedVehiclesList = new List<Vehicle>();  
             m_SupportedVehiclesList.Add(new Bike(2, 30, EnumClass.eFuelType.Octan98, 5.8f));
             m_SupportedVehiclesList.Add(new Bike(2, 30, 2.3f));
             m_SupportedVehiclesList.Add(new Car(4, 29, EnumClass.eFuelType.Octan95, 48));
@@ -33,9 +34,16 @@ namespace GarageLogic
 
         public Vehicle GetVehicleFromSupportedByIndex(int i_Index)
         {
-            return SupportedVehiclesList[i_Index];
+            return this.SupportedVehiclesList[i_Index];
         }
-        public List<Vehicle> SupportedVehiclesList { get;}
+        public List<Vehicle> SupportedVehiclesList
+        {
+            get
+            {
+                return m_SupportedVehiclesList;
+            }
+
+        }
 
         public void addVehicleToGarage(Vehicle i_Vehicle,string i_OwnerName, string i_OwnerPhoneNumber)
         {
@@ -105,13 +113,13 @@ namespace GarageLogic
             }
         }
 
-        public List<string> GetInformationRequiredForThisTypeOfVehicle(string i_LicenseNumber)
-        {
-            List<string> requiredInfo;
-            Vehicle vehicle = GetVehicleInGarageByLicenseNumber(i_LicenseNumber);
-            requiredInfo = Vehicle.RequiredInfoForCreation();
-            return requiredInfo;
-        }
+        //public List<string> GetInformationRequiredForThisTypeOfVehicle(string i_LicenseNumber)
+        //{
+        //    List<string> requiredInfo;
+        //    Vehicle vehicle = GetVehicleInGarageByLicenseNumber(i_LicenseNumber);
+        //    requiredInfo = Vehicle.RequiredInfoForCreation();
+        //    return requiredInfo;
+        //}
 
         public void FillMaxAir(string i_LiceseNumber)
         {

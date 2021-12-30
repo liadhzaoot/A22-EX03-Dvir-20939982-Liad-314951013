@@ -24,7 +24,7 @@ namespace Ex03.ConsoleUI
         public void Start()
         {
             Console.WriteLine("Welcome To Our Garage");
-            int intUserInput = 0;
+            int intUserInput;
             while (s_ExitProgram == false)
             {
                 intUserInput = m_MainMenu.ValidateMenuChoice();
@@ -89,7 +89,12 @@ namespace Ex03.ConsoleUI
             Vehicle vehicleToCreate;
 
             licenseNumber = getLicenseNumber();
-            if (m_Garage.GetVehicleInGarageByLicenseNumber(licenseNumber) == null)
+            try
+            {
+                m_Garage.GetVehicleInGarageByLicenseNumber(licenseNumber);
+            }
+
+            catch (Exception e)
             {
                 showSupportedVehicleInGarage();
                 userVehicleChoice = getUserVehicleChoice();
