@@ -42,7 +42,6 @@ namespace GarageLogic
             List<string> energySupplyInformation = this.EnergySupply.RequiredInfo();
             List<string> wheelsInformation = this.WheelsList[0].RequiredInfo();
             List<string> requiredInfo = new List<string>();
-            requiredInfo.Add("Please enter license number:");
             requiredInfo.Add("Please enter vehicle model name:");
             foreach (string info in energySupplyInformation)
             {
@@ -112,8 +111,18 @@ namespace GarageLogic
             return info;
 
         }
+        public void CheckUserInput(string i_UserInput,int requiredIndex)
+        {
+            switch (requiredIndex)
+            {
+                case 0:
+                    {
+                        
+                    }
+            }
+
+        }
         public EnergySupply EnergySupply { get; set; }
         //public abstract void AddGas(float i_GasAmountToAdd, EnumClass.eFuelType i_GasType);
-        public abstract List<string> GetStringListOfPrpeties();
     }
 }

@@ -80,7 +80,16 @@ namespace GarageLogic
                 m_VehicleInGarage = value;
             }
         }
-        
+
+        public StringBuilder GetInfo()
+        {
+            StringBuilder info = new StringBuilder();
+            this.Vehicle.GetInfo();
+            info.Append("Owner Name = " + this.OwnerName);
+            info.Append("Car Status = " + this.CarStatus.ToString());
+            return info;
+
+        }
 
     }
 }

@@ -18,6 +18,14 @@ namespace GarageLogic
             m_CargoVolume = i_CargoVolume;
             m_IsDrivesRefrigeratedContents = i_IsDrivesRefrigeratedContents;
         }
+
+
+        public Truck(int i_WheelsNumber, float i_MaxAirPressure, EnumClass.eFuelType i_FuelType, float i_MaxLiterFuelCapacity) :
+       base(i_WheelsNumber, i_MaxAirPressure)
+        {
+            this.EnergySupply = new FuelTank(i_MaxLiterFuelCapacity, i_FuelType);
+        }
+
         public Truck(int i_WheelsNumber, float i_MaxAirPressure) :
             base(i_WheelsNumber, i_MaxAirPressure)
         {
@@ -51,7 +59,6 @@ namespace GarageLogic
             List<string> requiredInfo = base.RequiredInfoForVehicle();
             requiredInfo.Add("Is the truck carrying refrigerated contents?\n" +  "yes or no :");
             requiredInfo.Add("Please enter truck's cargo volume:");
-
             return requiredInfo;
         }
 
@@ -63,5 +70,6 @@ namespace GarageLogic
             info.Append("Cargo Volume = " + this.CargoVolume);
             return info;
         }
+
     }
 }
