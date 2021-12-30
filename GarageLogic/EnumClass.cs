@@ -46,5 +46,23 @@ namespace GarageLogic
             Soler
         }
 
+        public static string GetEnumOptions(Type i_EnumType)
+        {
+            if (!typeof(Enum).IsAssignableFrom(i_EnumType))
+            {
+                throw new ArgumentException("Value must be enum type");
+            }
+
+            string optionsForPick = string.Empty;
+            int optionNumber = 1;
+            foreach (var type in Enum.GetNames(i_EnumType))
+            {
+                optionsForPick += "(" + optionNumber.ToString() + ")" + type + " ";
+                optionNumber++;
+            }
+
+            return optionsForPick;
+        }
+
     }
 }

@@ -48,7 +48,7 @@ namespace GarageLogic
             List<string> listOfProperties = new List<string>();
             listOfProperties.Add("model name");
             listOfProperties.Add("license number");
-            listOfProperties.Add("color");
+            listOfProperties.Add("color: blue - 0, yellow -1 " );
             listOfProperties.Add("number of doors");
             listOfProperties.Add("current fuel remaining");
             return listOfProperties;

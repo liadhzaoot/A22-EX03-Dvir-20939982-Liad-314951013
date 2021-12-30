@@ -40,5 +40,16 @@ namespace GarageLogic
             }
             this.m_CurrentEnergy += i_EnergyToAdd;
         }
+
+        public abstract List<string> RequiredInfo();
+        public virtual List<string> RequiredInfoForVehicle()
+        {
+            List<string> requiredInfo = new List<string>();
+            requiredInfo.Add(string.Format("Please enter  current energy left (max: {0}): ", this.MaxEnergy));
+
+            return requiredInfo;
+        }
+
+
     }
 }

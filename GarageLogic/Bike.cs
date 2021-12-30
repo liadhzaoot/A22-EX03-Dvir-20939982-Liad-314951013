@@ -57,6 +57,15 @@ namespace GarageLogic
             }
         }
 
+       public override List<string> RequiredInfo()
+        {
+            List<string> requiredInfo = base.RequiredInfoForVehicle();
+            requiredInfo.Add("Please choose license type:\n "  + EnumClass.GetEnumOptions(typeof(EnumClass.eLicenseType)));
+            requiredInfo.Add("Please enter engine capacity:");
+
+            return requiredInfo;
+        }
+
 
     }
 }

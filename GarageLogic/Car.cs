@@ -47,7 +47,14 @@ namespace GarageLogic
             }
         }
 
-        
+        public override List<string> RequiredInfo()
+        {
+            List<string> requiredInfo = base.RequiredInfoForVehicle();
+            requiredInfo.Add("Please choose color:\n" + EnumClass.GetEnumOptions(typeof(EnumClass.eColor)));
+            requiredInfo.Add("Please choose amount of doors:\n" + EnumClass.GetEnumOptions(typeof(EnumClass.eNumberOfDoors)));
+
+            return requiredInfo;
+        }
 
     }
 }

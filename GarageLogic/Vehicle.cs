@@ -35,6 +35,28 @@ namespace GarageLogic
                 m_WheelsList.Add(wheel);
             }
         }
+
+        public abstract List<string> RequiredInfo();
+        public virtual List<string> RequiredInfoForVehicle()
+        {
+            List<string> energySupplyInformation = m_EnergySupply.RequiredInfo();
+            List<string> wheelsInformation = m_WheelsList[0].RequiredInfo();
+            List<string> requiredInfo = new List<string>();
+
+            requiredInfo.Add("Please enter vehicle model name:");
+            foreach (string info in energySupplyInformation)
+            {
+                requiredInfo.Add(info);
+            }
+
+            foreach (string info in wheelsInformation)
+            {
+                requiredInfo.Add(info);
+            }
+
+            return requiredInfo;
+        }
+
         public string ModelName 
         {
             get
