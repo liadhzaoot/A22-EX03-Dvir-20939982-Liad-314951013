@@ -39,10 +39,10 @@ namespace GarageLogic
         public abstract List<string> RequiredInfo();
         public virtual List<string> RequiredInfoForVehicle()
         {
-            List<string> energySupplyInformation = m_EnergySupply.RequiredInfo();
-            List<string> wheelsInformation = m_WheelsList[0].RequiredInfo();
+            List<string> energySupplyInformation = this.EnergySupply.RequiredInfo();
+            List<string> wheelsInformation = this.WheelsList[0].RequiredInfo();
             List<string> requiredInfo = new List<string>();
-
+            requiredInfo.Add("Please enter license number:");
             requiredInfo.Add("Please enter vehicle model name:");
             foreach (string info in energySupplyInformation)
             {

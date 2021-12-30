@@ -12,7 +12,7 @@ namespace Ex03.ConsoleUI
         private Garage m_Garage;
         private MainMenu m_MainMenu;
         private List<string> m_SupportedVehicles;
-        private static s_ExitProgram = false;
+        private static bool s_ExitProgram = false;
 
         public UserInterface()
         {
@@ -28,7 +28,7 @@ namespace Ex03.ConsoleUI
             while (s_ExitProgram == false)
             {
                 intUserInput = m_MainMenu.ValidateMenuChoice();
-                userSelectionOnManu(userMenuSelection);
+                userSelectionOnManu(intUserInput);
 
             }
         }
@@ -83,7 +83,7 @@ namespace Ex03.ConsoleUI
 
         private void addNewVehicleToGarage()
         {
-            string licenseNumber = getLicenseNumber()
+            foreach(string requireInfo in m_Garage.)
 
 
                
@@ -91,6 +91,7 @@ namespace Ex03.ConsoleUI
 
         private string getLicenseNumber()
         {
+            
 
         }
 
