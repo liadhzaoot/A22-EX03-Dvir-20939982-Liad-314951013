@@ -12,6 +12,7 @@ namespace Ex03.ConsoleUI
        public static void Main()
         {
             UserInterface userInterface = new UserInterface();
+            //Console.WriteLine((EnumClass.eVehicleStatus)(2 - 1));
             userInterface.Start();
 
         }

@@ -49,7 +49,7 @@ namespace GarageLogic
             }
             set
             {
-                if (this.CargoVolume < 0)
+                if (value < 0)
                 {
                     throw new ArgumentException("invalid Cargo Vloume");
                 }
@@ -81,13 +81,13 @@ namespace GarageLogic
         public override void CheckUserInput(string i_UserInput, int i_RequiredIndex)
         {
             bool resultTryParse;
-            if (i_RequiredIndex < 5)
+            if (i_RequiredIndex < 4)
             {
                 this.CheckUserInputVehicle(i_UserInput, i_RequiredIndex);
             }
             switch (i_RequiredIndex)
             {
-                case 5:
+                case 4:
                     if (i_UserInput.ToLower() == "yes")
                     {
                         m_IsDrivesRefrigeratedContents = true;
@@ -101,7 +101,7 @@ namespace GarageLogic
                         throw new ArgumentException("Wrong answer entered");
                     }
                     break;
-                case 6:
+                case 5:
                     float CargoVolume;
                     resultTryParse = float.TryParse(i_UserInput, out CargoVolume);
                     if (!resultTryParse)

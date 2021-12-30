@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GarageLogic;
+
 
 namespace Ex03.ConsoleUI
 {
@@ -43,9 +45,20 @@ namespace Ex03.ConsoleUI
             int intUserInput = 0;
             while(validChoice == false)
             {
-                Console.WriteLine("Please enter your chioce (1-{0}", m_Options.Count);
-                usreInput = Console.ReadLine();
-                validChoice = int.TryParse(usreInput, out intUserInput);
+                try
+                {
+                    Console.WriteLine("Please enter your chioce (1-{0})", m_Options.Count);
+                    usreInput = Console.ReadLine();
+                    validChoice = int.TryParse(usreInput, out intUserInput);
+                    UserInterface.validateInputByRange(intUserInput, 1, m_Options.Count);
+                }
+                catch (Exception ex)
+                {
+                    Console.Clear();
+                    validChoice = false;
+                    Console.WriteLine(ex.Message);
+                    ShoeMenu();
+                }
             }
 
             return intUserInput;

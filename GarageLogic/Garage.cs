@@ -16,6 +16,7 @@ namespace GarageLogic
             initSupportedVehicles();
             this.m_VehiclesInGarage = i_Vehicles;
         }
+
         public Garage()
         {
             initSupportedVehicles();
@@ -60,6 +61,12 @@ namespace GarageLogic
             
         }
 
+        public void addVehicleToGarage(VehicleInGarage i_VehicleInGarage)
+        {
+            m_VehiclesInGarage.Add(i_VehicleInGarage);
+        }
+
+
         private VehicleInGarage GetVehicleInGarage(Vehicle i_Vehicle)
         {
             VehicleInGarage vehicleExist = null;
@@ -71,7 +78,7 @@ namespace GarageLogic
         }
 
 
-        public List<string> GetLicenseNumbersByVehicleStatus(EnumClass.eVehicleStatus i_FilterVehicleStatus = EnumClass.eVehicleStatus.NoStatus)
+        public List<string> GetLicenseNumbersByVehicleStatus(EnumClass.eVehicleStatus i_FilterVehicleStatus)
         {
             List<string> licenseNumberList = new List<string>();
             foreach (VehicleInGarage vehicleInGarage in m_VehiclesInGarage)
@@ -90,6 +97,7 @@ namespace GarageLogic
 
         public void ChangeStatus(string i_LicenseNumber, EnumClass.eVehicleStatus i_NewStatus)
         {
+
             GetVehicleInGarageByLicenseNumber(i_LicenseNumber).CarStatus = i_NewStatus;
 
         }
@@ -112,7 +120,7 @@ namespace GarageLogic
                 throw new ArgumentException("car does not exist");
             }
         }
-        }
+        
 
         //public List<string> GetInformationRequiredForThisTypeOfVehicle(string i_LicenseNumber)
         //{
@@ -131,7 +139,7 @@ namespace GarageLogic
             }
         }
 
-        public void RefuelVehicle(string i_LiceseNumber, EnumClass.eFuelType i_FuelType, float i_GasAmountToAdd)
+        public void RefuelVehicle(string i_LiceseNumber, EnumClass.eFuelType i_FuelType, float i_FuelAmountToAdd)
         {
 
             // ---------------------- watch out that we have 2 addFuel methods --------------------------------
@@ -139,14 +147,14 @@ namespace GarageLogic
             FuelTank fuelTank = vehicleInGarage.Vehicle.EnergySupply as FuelTank;
             if (fuelTank != null)
             {
-                fuelTank.AddFuel(i_GasAmountToAdd, i_FuelType);
+                fuelTank.AddFuel(i_FuelAmountToAdd, i_FuelType);
             }
             else
             {
                 throw new ArgumentException("Picked vehicle is not Fuel powered");
             }
         }
-        public void RechargeElectricVehicle(string i_LiceseNumber, float i_GasAmountToAdd)
+        public void RechargeElectricVehicle(string i_LiceseNumber, float i_MinutesAmountToAdd)
         {
 
             VehicleInGarage vehicleInGarage = GetVehicleInGarageByLicenseNumber(i_LiceseNumber);
@@ -154,7 +162,7 @@ namespace GarageLogic
             Battery battery = vehicleInGarage.Vehicle.EnergySupply as Battery;
             if(battery != null)
             {
-                battery.ChargeBattery(i_GasAmountToAdd);
+                battery.ChargeBattery(i_MinutesAmountToAdd);
             }
             else
             {
@@ -162,14 +170,11 @@ namespace GarageLogic
             }
         }
 
-        public void VehicleDetailByLiceseNumber(string i_LiceseNumber)
+        public StringBuilder VehicleDetailByLicenseNumber(string i_LiceseNumber)
         {
             VehicleInGarage vehicleInGarage = GetVehicleInGarageByLicenseNumber(i_LiceseNumber);
-            StringBuilder detail = new StringBuilder();
-            detail.Append("License Number = " + vehicleInGarage.Vehicle.LicenseNumber);
-            detail.Append("Model Name = " + vehicleInGarage.Vehicle.ModelName);
-            detail.Append("Owner Name = " + vehicleInGarage.OwnerName);
-            detail.Append("Car Status = " + vehicleInGarage.CarStatus.ToString());
+            StringBuilder detail = vehicleInGarage.GetInfo();
+            return detail;
 
         }
 

@@ -23,6 +23,12 @@ namespace GarageLogic
             this.m_OwnerPhoneNumber = i_OwnerPhoneNumber;
         }
 
+        public VehicleInGarage()
+        {
+
+        }
+
+       
         public EnumClass.eVehicleStatus CarStatus
         {
             get
@@ -33,6 +39,26 @@ namespace GarageLogic
             {
                 m_CarStatus = value;
             }
+        }
+
+        public void CheckUserInputVehicle(string i_UserInput, int i_RequiredIndex)
+        {
+            bool resultTryParse;
+            if (i_RequiredIndex < 6)
+            {
+                Vehicle.CheckUserInput(i_UserInput, i_RequiredIndex);
+            }
+
+            switch (i_RequiredIndex)
+            {
+                case 6:
+                    this.OwnerName = i_UserInput;
+                    break;
+                case 7:
+                    this.OwnerPhoneNumber = i_UserInput;
+                    break;
+            }
+
         }
 
         public virtual List<string> RequiredInfoForVehicleInGarage()

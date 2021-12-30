@@ -82,8 +82,8 @@ namespace GarageLogic
         {
             List<string> requiredInfo = new List<string>();
 
-            requiredInfo.Add("Please enter WHEEL'S MANUFACTURER NAME:");
-            requiredInfo.Add(string.Format("Please enter current WHEEL'S AIR PRESSURE (MAXIMUM: {0}):", m_MaxAirPressure));
+            requiredInfo.Add("Please enter the manifacture name of the wheels:");
+            requiredInfo.Add(string.Format("Please enter current air pressure of the wheels (maximum: {0}):", m_MaxAirPressure));
 
             return requiredInfo;
         }
