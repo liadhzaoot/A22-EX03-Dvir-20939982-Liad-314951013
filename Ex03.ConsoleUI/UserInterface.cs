@@ -356,10 +356,18 @@ namespace Ex03.ConsoleUI
         private void showFullInfo()
         {
             string licenseNumber = getLicenseNumber();
-            StringBuilder vehicleInfo = m_Garage.VehicleDetailByLicenseNumber(licenseNumber);
-            Console.WriteLine("Your Vehicle's Info:");
+            try
+            {
+                StringBuilder vehicleInfo = m_Garage.VehicleDetailByLicenseNumber(licenseNumber);
+                Console.WriteLine("Your Vehicle's Info:");
+                Console.WriteLine(vehicleInfo.ToString());
 
-            Console.WriteLine(vehicleInfo.ToString());
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
 
         }
     }
