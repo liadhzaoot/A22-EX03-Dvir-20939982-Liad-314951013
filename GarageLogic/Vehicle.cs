@@ -42,7 +42,6 @@ namespace GarageLogic
             List<string> energySupplyInformation = this.EnergySupply.RequiredInfo();
             List<string> wheelsInformation = this.WheelsList[0].RequiredInfo();
             List<string> requiredInfo = new List<string>();
-            requiredInfo.Add("Please enter license number:");
             requiredInfo.Add("Please enter vehicle model name:");
             foreach (string info in energySupplyInformation)
             {
@@ -116,7 +115,7 @@ namespace GarageLogic
         {
             switch (requiredIndex)
             {
-                case 1:
+                case 0:
                     {
                         
                     }
