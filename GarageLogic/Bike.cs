@@ -98,16 +98,16 @@ namespace GarageLogic
             return requiredInfo;
         }
 
-        public override void CheckUserInput(string i_UserInput, int requiredIndex)
+        public override void CheckUserInput(string i_UserInput, int i_RequiredIndex)
         {
-            if(requiredIndex < 4)
+            if(i_RequiredIndex < 4)
             {
-                this.CheckUserInputVehicle(i_UserInput, requiredIndex);
+                this.CheckUserInputVehicle(i_UserInput, i_RequiredIndex);
             }
             else
             {
                 bool resultTryParse;
-                switch (requiredIndex)
+                switch (i_RequiredIndex)
                 {
                     case 4:
                         int licenseType;

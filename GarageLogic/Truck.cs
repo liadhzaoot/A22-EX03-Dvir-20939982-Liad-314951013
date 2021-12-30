@@ -49,7 +49,14 @@ namespace GarageLogic
             }
             set
             {
-                m_CargoVolume = value;
+                if (this.CargoVolume < 0)
+                {
+                    throw new ArgumentException("invalid Cargo Vloume");
+                }
+                else
+                {
+                    m_CargoVolume = value;
+                }
             }
         }
 
@@ -71,5 +78,42 @@ namespace GarageLogic
             return info;
         }
 
+        public override void CheckUserInput(string i_UserInput, int i_RequiredIndex)
+        {
+            bool resultTryParse;
+            if (i_RequiredIndex < 5)
+            {
+                this.CheckUserInputVehicle(i_UserInput, i_RequiredIndex);
+            }
+            switch (i_RequiredIndex)
+            {
+                case 5:
+                    if (i_UserInput.ToLower() == "yes")
+                    {
+                        m_IsDrivesRefrigeratedContents = true;
+                    }
+                    else if (i_UserInput.ToLower() == "no")
+                    {
+                        m_IsDrivesRefrigeratedContents = false;
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Wrong answer entered");
+                    }
+                    break;
+                case 6:
+                    float CargoVolume;
+                    resultTryParse = float.TryParse(i_UserInput, out CargoVolume);
+                    if (!resultTryParse)
+                    {
+                        throw new FormatException("Wrong Type");
+                    }
+                    else
+                    {
+                        this.CargoVolume = CargoVolume;
+                    }
+                    break;
+            }
+        }
     }
 }

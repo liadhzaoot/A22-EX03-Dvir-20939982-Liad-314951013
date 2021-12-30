@@ -118,12 +118,12 @@ namespace GarageLogic
             return info;
 
         }
-        public abstract void CheckUserInput(string i_UserInput, int requiredIndex);
-        public void CheckUserInputVehicle(string i_UserInput, int requiredIndex)
+        public abstract void CheckUserInput(string i_UserInput, int i_RequiredIndex);
+        public void CheckUserInputVehicle(string i_UserInput, int i_RequiredIndex)
         {
             bool resultTryParse;
 
-            switch (requiredIndex)
+            switch (i_RequiredIndex)
             {
                 case 0: 
                     this.ModelName = i_UserInput;

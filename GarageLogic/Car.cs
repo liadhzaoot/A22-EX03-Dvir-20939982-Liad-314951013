@@ -21,7 +21,7 @@ namespace GarageLogic
         }
 
         // fuel engine
-        public Car(int i_WheelsNumber, float i_MaxAirPressure,EnumClass.eFuelType i_FuelType, float i_MaxLiterFuelCapacity) :
+        public Car(int i_WheelsNumber, float i_MaxAirPressure, EnumClass.eFuelType i_FuelType, float i_MaxLiterFuelCapacity) :
         base(i_WheelsNumber, i_MaxAirPressure)
         {
             this.EnergySupply = new FuelTank(i_MaxLiterFuelCapacity, i_FuelType);
@@ -40,7 +40,14 @@ namespace GarageLogic
             }
             set
             {
-                m_CarColor = value;
+                if (!Enum.IsDefined(typeof(EnumClass.eColor), value))
+                {
+                    throw new ArgumentException("Color not valid");
+                }
+                else
+                {
+                    m_CarColor = value;
+                }
             }
         }
 
@@ -52,7 +59,14 @@ namespace GarageLogic
             }
             set
             {
-                m_NumberOfDoors = value;
+                if (Enum.IsDefined(typeof(EnumClass.eNumberOfDoors), value) == false)
+                {
+                    throw new ArgumentException("Doors Amount picked not valid");
+                }
+                else
+                {
+                    this.m_NumberOfDoors = value;
+                }
             }
         }
 
@@ -74,5 +88,43 @@ namespace GarageLogic
             return requiredInfo;
         }
 
+        public override void CheckUserInput(string i_UserInput, int i_RequiredIndex)
+        {
+            bool resultTryParse;
+            if (i_RequiredIndex < 5)
+            {
+                this.CheckUserInputVehicle(i_UserInput, i_RequiredIndex);
+            }
+            switch (i_RequiredIndex)
+            {
+                case 4:
+                    int carColor;
+                    resultTryParse = int.TryParse(i_UserInput, out carColor);
+                    if (!resultTryParse)
+                    {
+                        throw new FormatException("Wrong Type");
+                    }
+                    else
+                    {
+                        this.CarColor = (EnumClass.eColor)carColor;
+                    }
+                    break;
+                case 5:
+                    int doorAmount;
+                    resultTryParse = int.TryParse(i_UserInput, out doorAmount);
+                    if (!resultTryParse)
+                    {
+                        throw new FormatException("Wrong Type");
+                    }
+                    else
+                    {
+                        this.NumberOfDoors = (EnumClass.eNumberOfDoors)doorAmount;
+                    }
+                    break;
+            }
+        } 
+        
+
+        }
     }
 }
