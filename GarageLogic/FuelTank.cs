@@ -56,7 +56,7 @@ namespace GarageLogic
         {
             StringBuilder info = new StringBuilder();
             info = this.GetEnergySupplyInfo();
-            info.Append("Fuel Type = " + this.FuelType.ToString());
+            info.Append("Fuel Type = " + this.FuelType.ToString() + "\n");
             return info;
         }
 

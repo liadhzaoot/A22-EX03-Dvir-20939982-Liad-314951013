@@ -113,8 +113,8 @@ namespace GarageLogic
         {
             StringBuilder info = new StringBuilder();
             this.EnergySupply.GetInfo();
-            info.Append("License Number = " + this.LicenseNumber);
-            info.Append("Model Name = " + this.ModelName);
+            info.Append("License Number = " + this.LicenseNumber + "\n");
+            info.Append("Model Name = " + this.ModelName + "\n");
             return info;
 
         }

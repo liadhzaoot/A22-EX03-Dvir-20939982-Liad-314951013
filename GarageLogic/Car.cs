@@ -75,8 +75,8 @@ namespace GarageLogic
             StringBuilder info = new StringBuilder();
             info = this.GetVehicleInfo();
             info.Append(this.EnergySupply.GetInfo());
-            info.Append("Car Color = " + this.CarColor.ToString());
-            info.Append("Number Of Doors = " + this.NumberOfDoors.ToString());
+            info.Append("Car Color = " + this.CarColor.ToString() + "\n");
+            info.Append("Number Of Doors = " + this.NumberOfDoors.ToString() + "\n");
             return info;
         }
         public override List<string> RequiredInfo()

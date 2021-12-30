@@ -57,7 +57,7 @@ namespace GarageLogic
         public StringBuilder GetEnergySupplyInfo()
         {
             StringBuilder info = new StringBuilder();
-            info.Append("Current Energy = " + this.CurrentEnergy);
+            info.Append("Current Energy = " + this.CurrentEnergy + "\n");
             return info;
         }
 

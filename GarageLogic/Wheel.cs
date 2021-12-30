@@ -90,8 +90,8 @@ namespace GarageLogic
         public StringBuilder GetInfo()
         {
             StringBuilder info = new StringBuilder();
-            info.Append("Air Pressure = " + this.MaxAirPressure);
-            info.Append("Manufacture Name = " + this.ManufactureName);
+            info.Append("Air Pressure = " + this.MaxAirPressure + "\n");
+            info.Append("Manufacture Name = " + this.ManufactureName + "\n");
             return info;
         }
     }

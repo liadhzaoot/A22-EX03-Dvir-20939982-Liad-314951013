@@ -73,8 +73,8 @@ namespace GarageLogic
         {
             StringBuilder info = new StringBuilder();
             info = this.GetVehicleInfo();
-            info.Append("Is drives refrigerated contents = " + this.IsDrivesRefrigeratedContents);
-            info.Append("Cargo Volume = " + this.CargoVolume);
+            info.Append("Is drives refrigerated contents = " + this.IsDrivesRefrigeratedContents + "\n");
+            info.Append("Cargo Volume = " + this.CargoVolume + "\n");
             return info;
         }
 

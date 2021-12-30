@@ -84,8 +84,8 @@ namespace GarageLogic
             StringBuilder info = new StringBuilder();
             info = this.GetVehicleInfo();
             info.Append(this.EnergySupply.GetInfo());
-            info.Append("License Type = " + this.LicenseType.ToString());
-            info.Append("Engine Capacity = " + this.EngineCapacity.ToString());
+            info.Append("License Type = " + this.LicenseType.ToString() + "\n");
+            info.Append("Engine Capacity = " + this.EngineCapacity.ToString() + "\n");
             return info;
 
         }
