@@ -31,7 +31,7 @@ namespace Ex03.ConsoleUI
                 Console.Clear();
                 m_MainMenu.ShoeMenu();
                 intUserInput = m_MainMenu.ValidateMenuChoice();
-                userSelectionOnManu(intUserInput);
+                UserSelectionOnManu(intUserInput);
 
             }
         }
@@ -48,7 +48,7 @@ namespace Ex03.ConsoleUI
             return userInput;
         }
 
-        public void userSelectionOnManu(int i_userSelection)
+        public void UserSelectionOnManu(int i_userSelection)
         {
             Console.Clear();
             switch (i_userSelection)
@@ -92,8 +92,6 @@ namespace Ex03.ConsoleUI
         {
             List<string> infoRequired;
             string licenseNumber = "";
-            string ownerName = "";
-            string phoneNumber = "";
             int userVehicleChoice = 0;
             Vehicle vehicleToCreate;
             VehicleInGarage vehicleInGarage = new VehicleInGarage();
@@ -160,7 +158,7 @@ namespace Ex03.ConsoleUI
                 int.TryParse(userInput, out intUserInput);
                 try 
                 {
-                    validateInputByRange(intUserInput, 1, supportedTypeCount);
+                    ValidateInputByRange(intUserInput, 1, supportedTypeCount);
                     validChoice = true;
                 }
                 catch(Exception ex)
@@ -207,7 +205,7 @@ namespace Ex03.ConsoleUI
             return licenseNumber;
         }
 
-        public static void validateInputByRange(int i_UserInput, int i_MinValue, int i_MaxValue)
+        public static void ValidateInputByRange(int i_UserInput, int i_MinValue, int i_MaxValue)
         {
             if (i_UserInput <i_MinValue || i_UserInput >i_MaxValue)
             {
@@ -308,7 +306,7 @@ namespace Ex03.ConsoleUI
                 int.TryParse(userInput, out intUserInput);
                 try
                 {
-                    validateInputByRange(intUserInput, 1, sizeOfEnumType);
+                    ValidateInputByRange(intUserInput, 1, sizeOfEnumType);
                     validChoice = true;
                 }
                 catch (Exception ex)

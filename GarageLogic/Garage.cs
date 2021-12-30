@@ -35,7 +35,7 @@ namespace GarageLogic
 
         public Vehicle GetVehicleFromSupportedByIndex(int i_Index)
         {
-            return this.SupportedVehiclesList[i_Index];
+            return this.SupportedVehiclesList[i_Index - 1];
         }
         public List<Vehicle> SupportedVehiclesList
         {
