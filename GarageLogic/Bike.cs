@@ -17,7 +17,7 @@ namespace GarageLogic
             int i_EngineCapacity):base(i_ModelName, i_LicenseNumber, i_WheelsNumber)
         {
             m_LicenseType = i_LicenseType;
-            m_EngineCapacity = i_EngineCapacity;    
+            m_EngineCapacity = i_EngineCapacity;
         }
 
 
@@ -51,7 +51,12 @@ namespace GarageLogic
             }
             set
             {
-                m_EngineCapacity = value;
+                if(m_EngineCapacity <= 0)
+                {
+                    throw new ArgumentException("invalid engine capacity");
+                }
+                else
+                    m_EngineCapacity = value;
             }
         }
 
@@ -63,7 +68,14 @@ namespace GarageLogic
             }
             set
             {
-                m_LicenseType = value;
+                if (Enum.IsDefined(typeof(EnumClass.eFuelType), value) == false)
+                {
+                    throw new ArgumentException("License type not valid");
+                }
+                else
+                {
+                    m_LicenseType = value;
+                }
             }
         }
 
@@ -86,6 +98,43 @@ namespace GarageLogic
             return requiredInfo;
         }
 
-
+        public override void CheckUserInput(string i_UserInput, int requiredIndex)
+        {
+            if(requiredIndex < 4)
+            {
+                this.CheckUserInputVehicle(i_UserInput, requiredIndex);
+            }
+            else
+            {
+                bool resultTryParse;
+                switch (requiredIndex)
+                {
+                    case 4:
+                        int licenseType;
+                        resultTryParse = int.TryParse(i_UserInput, out licenseType);
+                        if (!resultTryParse)
+                        {
+                            throw new FormatException("Wrong Type");
+                        }
+                        else
+                        {
+                            this.LicenseType = (EnumClass.eLicenseType)licenseType;
+                        }
+                        break;
+                    case 5:
+                        int engineCapacity;
+                        resultTryParse = int.TryParse(i_UserInput, out engineCapacity);
+                        if (!resultTryParse)
+                        {
+                            throw new FormatException("Wrong Type");
+                        }
+                        else
+                        {
+                            this.EngineCapacity = engineCapacity;
+                        }
+                        break;
+                }
+            }
+        }
     }
 }

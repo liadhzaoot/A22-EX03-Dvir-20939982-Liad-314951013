@@ -38,7 +38,14 @@ namespace GarageLogic
             }
             set 
             {
-                m_ManufactureName = value;
+                if (value != string.Empty && !value.StartsWith(" "))
+                {
+                    m_ManufactureName = value.Trim();
+                }
+                else
+                {
+                    throw new ArgumentException("Manufacture name entered is not valid");
+                }
             }
         }
         public float CurrentAirPressure
@@ -49,7 +56,14 @@ namespace GarageLogic
             }
             set
             {
-                m_CurrentAirPressure = value;
+                if (value > this.MaxAirPressure || value < 0)
+                {
+                    throw new ValueOutOfRangeException(this.MaxAirPressure, 0);
+                }
+                else
+                {
+                    m_CurrentAirPressure = value;
+                }
             }
         }
         public float MaxAirPressure

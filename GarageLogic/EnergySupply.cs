@@ -13,18 +13,31 @@ namespace GarageLogic
 
         public EnergySupply(float i_CurrentEnergy, float i_MaxEnergy)
         {
-            m_CurrentEnergy = i_CurrentEnergy;
-            m_MaxEnergy = i_MaxEnergy;
+            this.m_CurrentEnergy = i_CurrentEnergy;
+            this.m_MaxEnergy = i_MaxEnergy;
         }
         public EnergySupply(float i_MaxEnergy)
         {
-            m_MaxEnergy = i_MaxEnergy;
+            this.m_MaxEnergy = i_MaxEnergy;
         }
 
         public float CurrentEnergy
         {
-            get { return this.m_CurrentEnergy; }
-            set { this.m_CurrentEnergy = value; }
+            get 
+            {
+                return this.m_CurrentEnergy; 
+            }
+            set 
+            {
+                if (value > this.MaxEnergy || value < 0)
+                {
+                    throw new ValueOutOfRangeException(0, this.MaxEnergy);
+                }
+                else
+                {
+                    this.m_CurrentEnergy = value;
+                }
+            }
         }
         public float MaxEnergy
         {

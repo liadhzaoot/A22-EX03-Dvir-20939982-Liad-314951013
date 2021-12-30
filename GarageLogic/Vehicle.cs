@@ -64,7 +64,14 @@ namespace GarageLogic
             }
             set
             {
-                m_ModelName = value;
+                if (value != string.Empty)
+                {
+                    m_ModelName = value.Trim();
+                }
+                else
+                {
+                    throw new ArgumentException("Model name entered is not valid");
+                }
             }
         }
         public string LicenseNumber
@@ -111,16 +118,61 @@ namespace GarageLogic
             return info;
 
         }
-        public void CheckUserInput(string i_UserInput,int requiredIndex)
+        public abstract void CheckUserInput(string i_UserInput, int requiredIndex);
+        public void CheckUserInputVehicle(string i_UserInput, int requiredIndex)
         {
+            bool resultTryParse;
+
             switch (requiredIndex)
             {
-                case 0:
+                case 0: 
+                    this.ModelName = i_UserInput;
+                    break;
+                case 1: 
+                    float currentEnergy;
+                    resultTryParse = float.TryParse(i_UserInput, out currentEnergy);
+                    if (!resultTryParse)
                     {
-                        
+                        throw new FormatException("Wrong Type");
                     }
+                    else
+                    {
+                        this.EnergySupply.CurrentEnergy = currentEnergy;
+                    }
+                    break;
+                case 2:
+                    SetAllWheelsManufacturerName(i_UserInput);
+                    break;
+                case 3:
+                    float airPressure;
+                    resultTryParse = float.TryParse(i_UserInput, out airPressure);
+                    if (!resultTryParse)
+                    {
+                        throw new FormatException("Wrong Type");
+                    }
+                    else
+                    {
+                        SetAllWheelsAirPressure(airPressure);
+                    }
+                    break;
+
             }
 
+        }
+        internal void SetAllWheelsManufacturerName(string i_ManufacturerName)
+        {
+            foreach (Wheel wheel in this.WheelsList)
+            {
+                wheel.ManufactureName = i_ManufacturerName;
+            }
+        }
+
+        internal void SetAllWheelsAirPressure(float i_AirPressure)
+        {
+            foreach (Wheel wheel in this.WheelsList)
+            {
+                wheel.CurrentAirPressure = i_AirPressure;
+            }
         }
         public EnergySupply EnergySupply { get; set; }
         //public abstract void AddGas(float i_GasAmountToAdd, EnumClass.eFuelType i_GasType);
