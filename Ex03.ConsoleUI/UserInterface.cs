@@ -55,26 +55,27 @@ namespace Ex03.ConsoleUI
             {
                 case 1:
                     addNewVehicleToGarage();
+                    Thread.Sleep(5000);
                     break;
                 case 2:
                     showLicenseNumbersWithStatus();
-                    Thread.Sleep(3000);
+                    Thread.Sleep(5000);
                     break;
                 case 3:
                     changeVehicleStatuses();
-                    Thread.Sleep(3000);
+                    Thread.Sleep(5000);
                     break;
                 case 4:
                     filVehicleWheelsAirToMax();
-                    Thread.Sleep(3000);
+                    Thread.Sleep(5000);
                     break;
                 case 5:
                     refuelVehicle();
-                    Thread.Sleep(3000);
+                    Thread.Sleep(5000);
                     break;
                 case 6:
                     chargeElectricVehicle();
-                    Thread.Sleep(3000);
+                    Thread.Sleep(5000);
                     break;
                 case 7:
                     showFullInfo();
@@ -111,6 +112,7 @@ namespace Ex03.ConsoleUI
                 vehicleInGarage.Vehicle = vehicleToCreate;
                 getAllRequiredInfo(vehicleInGarage);
                 m_Garage.addVehicleToGarage(vehicleInGarage);
+                Console.WriteLine("Thank you for entered your vehicle to our garage");
             }
         }
 

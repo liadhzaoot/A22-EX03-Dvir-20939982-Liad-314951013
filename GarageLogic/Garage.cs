@@ -52,17 +52,19 @@ namespace GarageLogic
             if (vehicleToAdd == null)
             {
                 VehicleInGarage vehicleInGarage = new VehicleInGarage(i_Vehicle, i_OwnerName, i_OwnerPhoneNumber);
+                vehicleToAdd.CarStatus = EnumClass.eVehicleStatus.InRepair;
                 m_VehiclesInGarage.Add(vehicleInGarage);
             }
             else
             {
                 vehicleToAdd.CarStatus = EnumClass.eVehicleStatus.InRepair;
             }
-            
+
         }
 
         public void addVehicleToGarage(VehicleInGarage i_VehicleInGarage)
         {
+            i_VehicleInGarage.CarStatus = EnumClass.eVehicleStatus.InRepair;
             m_VehiclesInGarage.Add(i_VehicleInGarage);
         }
 

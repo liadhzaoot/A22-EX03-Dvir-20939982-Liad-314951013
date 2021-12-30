@@ -28,7 +28,7 @@ namespace GarageLogic
 
         }
 
-       
+
         public EnumClass.eVehicleStatus CarStatus
         {
             get
